@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Blog Test</title></head>
+<body>
+    <h1>Blog Posts</h1>
+    <p>Number of posts: {{ page_obj.paginator.count }}</p>
+    <ul>
+    {% for post in page_obj %}
+        <li>{{ post.title }} ({{ post.published_at }})</li>
+    {% empty %}
+        <li>No posts found</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

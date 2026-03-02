@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MEHIT Store - Safety & Compliance Equipment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #0f1724; /* dark background */
+  --bg-2: #0b1220;
+  --card: #0e1626;
+  --muted: #9aa4b2;
+  --white: #ffffff;
+  --accent: #10b981; /* green */
+  --primary: #2563eb; /* blue */
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --glass: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.06);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 4px 10px rgba(2,6,23,0.6);
+  --shadow-lg: 0 8px 30px rgba(2,6,23,0.7);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,var(--bg),var(--bg-2));
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:15px;
+  line-height:1.45;
+}
+
+/* PAGE LAYOUT */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 2rem;
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0; z-index:60;
+}
+.logo{display:flex;align-items:center;gap:0.75rem;color:var(--white);text-decoration:none}
+.logo-icon{background:linear-gradient(45deg,#059669,#10b981);padding:0.5rem;border-radius:8px;color:white}
+.logo span{font-weight:700;letter-spacing:1px}
+
+.header-nav{display:flex;align-items:center;gap:1rem}
+.header-nav a{color:var(--muted);text-decoration:none;padding:0.5rem 0.75rem;border-radius:8px}
+.header-nav a.active, .header-nav a:hover{color:var(--white);background:var(--glass)}
+.cart-icon{display:flex;align-items:center;gap:0.5rem;cursor:pointer;color:var(--muted);padding:0.4rem 0.6rem;border-radius:8px}
+.cart-icon:hover{color:var(--white);background:var(--glass)}
+.cart-count{background:var(--accent);color:#063;display:inline-block;padding:0.12rem 0.45rem;border-radius:999px;font-weight:700;margin-left:0.25rem}
+
+/* HERO */
+.hero-banner{padding:3.5rem 2rem;background:linear-gradient(90deg, rgba(37,99,235,0.08), rgba(16,185,129,0.03));border-bottom:1px solid var(--border)}
+.hero-content{max-width:1200px;margin:0 auto;color:var(--white)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.04);padding:0.3rem 0.6rem;border-radius:999px;color:var(--accent);font-weight:700;margin-bottom:0.75rem}
+.hero-title{font-size:2rem;margin:0 0 0.5rem}
+.hero-subtitle{color:var(--muted);margin:0 0 1.25rem}
+.hero-stats{display:flex;gap:1rem;margin-top:1.25rem;flex-wrap:wrap}
+.stat-item{background:var(--glass);padding:0.75rem 1rem;border-radius:10px;text-align:center}
+.stat-number{font-weight:700}
+.stat-label{color:var(--muted);font-size:0.85rem}
+
+.container{max-width:1200px;margin:2rem auto;display:grid;grid-template-columns:280px 1fr;gap:1.5rem;padding:0 1rem}
+
+/* SIDEBAR */
+.sidebar{padding:1rem;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius-md);border:1px solid var(--border)}
+.sidebar-section{margin-bottom:1rem}
+.sidebar h3{margin:0 0 0.5rem;font-size:1rem}
+.filter-list{list-style:none;padding:0;margin:0}
+.filter-item{display:flex;justify-content:space-between;align-items:center;padding:0.5rem;border-radius:8px;cursor:pointer;color:var(--muted);margin-bottom:0.35rem}
+.filter-item.active{background:rgba(255,255,255,0.02);color:var(--white);font-weight:600}
+.filter-count{color:var(--muted);font-size:0.85rem}
+.price-range{width:100%}
+.price-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:0.9rem;margin-top:0.5rem}
+.filter-tags .tag{display:inline-block;padding:0.35rem 0.6rem;border-radius:999px;background:transparent;border:1px solid transparent;color:var(--muted);cursor:pointer;margin:0.2rem;font-size:0.9rem}
+.filter-tags .tag.active{background:var(--glass);color:var(--white);border-color:var(--border)}
+
+/* MAIN */
+main{padding:0}
+.store-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;gap:1rem}
+.store-title{margin:0}
+.controls{display:flex;align-items:center;gap:0.75rem}
+.search-box{display:flex;align-items:center;background:var(--card);padding:0.35rem 0.5rem;border-radius:8px;border:1px solid var(--border)}
+.search-icon{color:var(--muted);margin-right:0.5rem}
+.search-box input{background:transparent;border:none;color:var(--white);outline:none;width:220px}
+.sort-select{background:var(--card);border:1px solid var(--border);color:var(--white);padding:0.4rem;border-radius:8px}
+
+/* PRODUCT GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.product{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:1rem;border-radius:12px;border:1px solid var(--border);transition:transform .18s ease, box-shadow .18s ease}
+.product:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.product-badge{position:absolute;background:var(--accent);color:#042;padding:0.25rem 0.5rem;border-radius:6px;font-weight:700;margin-left:0.5rem;margin-top:0.5rem}
+.product-badge.pulse{background:linear-gradient(90deg,#60a5fa,#10b981);animation:pulse 1.6s infinite}
+.product-badge.danger{background:var(--danger);color:white}
+.product-badge.warning{background:var(--warning);color:#111}
+.product-image{height:160px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.01);border-radius:8px;margin-bottom:0.75rem}
+.product-image img{max-width:100%;max-height:100%;object-fit:contain}
+.product h4{margin:0 0 0.25rem;font-size:1.05rem}
+.product-sku{color:var(--muted);font-size:0.85rem;margin-bottom:0.5rem}
+.product-features{list-style:none;padding:0;margin:0 0 0.75rem}
+.product-features li{color:var(--muted);font-size:0.9rem;margin-bottom:0.35rem}
+.product-footer{display:flex;align-items:center;justify-content:space-between;gap:0.5rem}
+.product-price{font-weight:700;color:var(--accent)}
+.product-actions button{margin-left:0.5rem}
+
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.45rem 0.6rem;border-radius:8px;border:none;cursor:pointer}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--white)}
+.btn-primary{background:var(--primary);color:white}
+
+.no-products{grid-column:1/-1;background:transparent}
+
+/* Featured Section */
+.featured-section{margin-top:2rem;background:transparent;padding:1rem;border-radius:12px}
+.featured-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+.featured-item{background:var(--card);padding:1rem;border-radius:10px;border:1px solid var(--border);text-align:center}
+.featured-icon{font-size:1.6rem;margin-bottom:0.5rem;color:var(--primary)}
+
+/* MODALS */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:100}
+.modal.active{display:flex}
+.modal-content{background:linear-gradient(180deg,#081426,#0b1526);padding:1rem;border-radius:12px;min-width:320px;max-width:960px;border:1px solid var(--border);box-shadow:var(--shadow-lg)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.modal-close{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+.modal-body{max-height:60vh;overflow:auto;padding:0.5rem 0}
+.modal-footer{display:flex;align-items:center;gap:0.5rem;margin-top:0.5rem}
+
+/* Cart styles */
+.cart-item{transition:background .15s ease}
+
+/* small helpers */
+.fade-in{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+
+/* responsive */
+@media (max-width:1100px){
+  .container{grid-template-columns:220px 1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .featured-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:780px){
+  .container{grid-template-columns:1fr;padding:0 1rem}
+  .sidebar{order:2}
+  main{order:1}
+  .grid{grid-template-columns:1fr}
+  .hero-title{font-size:1.4rem}
+  .search-box input{width:120px}
+}
+
+/* micro adjustments for print / simple view */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="/" class="logo">
+    <i class="fas fa-shield-alt logo-icon"></i>
+    <span>MEHIT STORE</span>
+  </a>
+  
+  <div class="header-nav">
+    <a href="/" class="active">Store</a>
+    <a href="/orders/">Orders</a>
+    <a href="/support/">Support</a>
+    <a href="/bulk-order/">Bulk Orders</a>
+    <div class="cart-icon" onclick="toggleCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">{{ cart_items_count|default:0 }}</span>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <div class="hero-badge">Trusted by {{ total_customers|default:"500+" }} Institutions</div>
+    <h1 class="hero-title">Safety & Compliance Equipment</h1>
+    <p class="hero-subtitle">Certified safety products, inspection tools, and compliance kits for schools, hospitals, factories, and public institutions</p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">{{ total_products|default:"200+" }}</div>
+        <div class="stat-label">Products</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">KEBS</div>
+        <div class="stat-label">Certified</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24h</div>
+        <div class="stat-label">Delivery</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Free</div>
+        <div class="stat-label">Compliance Audit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- SIDEBAR - DYNAMIC CATEGORIES -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <h3>Categories</h3>
+      <ul class="filter-list" id="categoryList">
+        <li class="filter-item active" data-category="all" onclick="filterCategory('all')">
+          <span>All Equipment</span>
+          <span class="filter-count">{{ total_products_count|default:"0" }}</span>
+        </li>
+        {% for category in categories %}
+        <li class="filter-item" data-category="{{ category.slug }}" onclick="filterCategory('{{ category.slug }}')">
+          <span>{{ category.name }}</span>
+          <span class="filter-count">{{ category.product_count }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Price Range</h3>
+      <input type="range" min="0" max="{{ max_price|default:50000 }}" value="{{ max_price|default:25000 }}" class="price-range" oninput="updatePriceRange(this.value)">
+      <div class="price-labels">
+        <span>KES 0</span>
+        <span id="priceValue">KES {{ default_price|default:"25,000" }}</span>
+        <span>KES {{ max_price|default:"50,000" }}+</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Sectors</h3>
+      <div class="filter-tags" id="sectorTags">
+        <span class="tag active" onclick="filterSector('all')">All</span>
+        {% for sector in sectors %}
+        <span class="tag" onclick="filterSector('{{ sector.slug }}')">{{ sector.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Certifications</h3>
+      <div class="filter-tags" id="certTags">
+        <span class="tag active" onclick="filterCert('all')">All</span>
+        {% for cert in certifications %}
+        <span class="tag" onclick="filterCert('{{ cert.slug }}')">{{ cert.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN STORE - DYNAMIC PRODUCTS -->
+  <main>
+    <div class="store-header">
+      <h1 class="store-title">Equipment & Compliance Products</h1>
+      <div class="controls">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts(this.value)">
+        </div>
+        <select class="sort-select" id="sortSelect" onchange="sortProducts(this.value)">
+          <option value="relevance">Sort by relevance</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name: A-Z</option>
+          <option value="popular">Most Popular</option>
+          <option value="newest">Newest Arrivals</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid" id="productGrid">
+      {% for product in products %}
+      <div class="product fade-in" 
+           data-product-id="{{ product.id }}"
+           data-category="{{ product.category.slug }}" 
+           data-sector="{{ product.sector_slugs }}" 
+           data-cert="{{ product.certification_slugs }}"
+           data-price="{{ product.price }}"
+           data-name="{{ product.name|lower }}">
+        
+        {% if product.is_best_seller %}
+        <div class="product-badge">Best Seller</div>
+        {% elif product.is_new %}
+        <div class="product-badge pulse">New</div>
+        {% elif product.stock_quantity < 10 %}
+        <div class="product-badge danger">Limited Stock</div>
+        {% elif product.is_on_sale %}
+        <div class="product-badge warning">Special Offer</div>
+        {% endif %}
+        
+        <div class="product-image">
+          {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          {% else %}
+          <i class="fas fa-{{ product.icon|default:'box' }} product-image-placeholder"></i>
+          {% endif %}
+        </div>
+        
+        <h4>{{ product.name }}</h4>
+        <div class="product-sku">{{ product.sku }}</div>
+        
+        <ul class="product-features">
+          {% for feature in product.features|slice:":4" %}
+          <li><i class="fas fa-check"></i> {{ feature }}</li>
+          {% endfor %}
+        </ul>
+        
+        <div class="product-footer">
+          <div class="product-price">KES {{ product.price|floatformat:0|intcomma }}</div>
+          <div class="product-actions">
+            <button class="btn btn-outline" onclick="addToCart('{{ product.sku }}')">
+              <i class="fas fa-cart-plus"></i> Cart
+            </button>
+            <button class="btn btn-primary" onclick="viewProduct({{ product.id }})">
+              <i class="fas fa-eye"></i> View
+            </button>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="no-products">
+        <i class="fas fa-box-open" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 1rem;"></i>
+        <h3>No products found</h3>
+        <p>Check back soon for new safety equipment arrivals.</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if products.has_other_pages %}
+    <div class="pagination">
+      {% if products.has_previous %}
+      <a href="?page={{ products.previous_page_number }}" class="btn btn-outline">&laquo; Previous</a>
+      {% endif %}
+      
+      {% for i in products.paginator.page_range %}
+        {% if products.number == i %}
+        <span class="btn btn-primary" style="margin: 0 0.25rem;">{{ i }}</span>
+        {% else %}
+        <a href="?page={{ i }}" class="btn btn-outline" style="margin: 0 0.25rem;">{{ i }}</a>
+        {% endif %}
+      {% endfor %}
+      
+      {% if products.has_next %}
+      <a href="?page={{ products.next_page_number }}" class="btn btn-outline">Next &raquo;</a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+      <div class="featured-header">
+        <h2>Why Choose MEHIT Store?</h2>
+        <p>We provide more than just products - we ensure your compliance and safety needs are fully met</p>
+      </div>
+      <div class="featured-grid">
+        <div class="featured-item">
+          <div class="featured-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h4>Certified Products</h4>
+          <p>All products are KEBS, ISO, and OSHA certified for guaranteed safety standards</p>
+        </div>
+        <div class="featured-item">
+          <div class="featured-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h4>Nationwide Delivery</h4>
+          <p>Free delivery for orders over KES 50,000. Same-day delivery in Nairobi</p>
+        </div>
+        <div class="featured-item">
+          <div class="featured-icon">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <h4>Compliance Support</h4>
+          <p>Free compliance audit with bulk orders. Expert guidance for your sector</p>
+        </div>
+        <div class="featured-item">
+          <div class="featured-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h4>Dedicated Support</h4>
+          <p>24/7 technical support and product training for your team</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalProductTitle">Product Details</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- Content will be loaded dynamically -->
+      <div class="loading-spinner" style="text-align: center; padding: 2rem;">
+        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+        <p>Loading product details...</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal()">Close</button>
+      <button class="btn btn-primary" id="addToCartModalBtn" onclick="addToCartFromModal()">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Sidebar Modal -->
+<div class="modal" id="cartModal">
+  <div class="modal-content" style="max-width: 600px;">
+    <div class="modal-header">
+      <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+      <button class="modal-close" onclick="closeCartModal()">×</button>
+    </div>
+    <div class="modal-body" id="cartModalBody">
+      <div id="cartItemsContainer">
+        <!-- Cart items will be loaded here -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div style="flex: 1; text-align: left; font-weight: 600;">
+        Total: <span id="cartTotal">KES 0</span>
+      </div>
+      <button class="btn btn-outline" onclick="closeCartModal()">Continue Shopping</button>
+      <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h4>MEHIT Store</h4>
+      <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem; font-size: 0.875rem;">
+        Certified safety equipment and compliance solutions for institutions across Kenya.
+      </p>
+      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <a href="#" style="color: white; font-size: 1.25rem;"><i class="fab fa-twitter"></i></a>
+        <a href="#" style="color: white; font-size: 1.25rem;"><i class="fab fa-linkedin"></i></a>
+        <a href="#" style="color: white; font-size: 1.25rem;"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="/">All Products</a></li>
+        <li><a href="/bulk-order/">Bulk Orders</a></li>
+        <li><a href="/compliance-kits/">Compliance Kits</a></li>
+        <li><a href="/sector-solutions/">Sector Solutions</a></li>
+        <li><a href="/training/">Training Programs</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Support</h4>
+      <ul class="footer-links">
+        <li><a href="/orders/tracking/">Order Tracking</a></li>
+        <li><a href="/returns/">Returns & Warranty</a></li>
+        <li><a href="/support/">Technical Support</a></li>
+        <li><a href="/compliance-help/">Compliance Help</a></li>
+        <li><a href="/contact/">Contact Us</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <ul class="footer-links">
+        <li><a href="tel:{{ company_phone|default:'+254700000000' }}"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> {{ company_phone|default:'+254 700 000 000' }}</a></li>
+        <li><a href="mailto:{{ company_email|default:'store@mehit.com' }}"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> {{ company_email|default:'store@mehit.com' }}</a></li>
+        <li><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i> {{ company_address|default:'Nairobi, Kenya' }}</li>
+        <li><i class="fas fa-clock" style="margin-right: 0.5rem;"></i> {{ business_hours|default:'Mon-Fri: 8AM-6PM' }}</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© {% now "Y" %} MEHIT — Industrial Safety & Compliance Supply. All rights reserved.</p>
+    <p class="mt-1">Compliant with Kenya Bureau of Standards & OSHA Regulations</p>
+  </div>
+</footer>
+
+<script>
+// ============================================
+// DJANGO BACKEND INTEGRATION - COMPLETE
+// ============================================
+
+// CSRF Token for Django AJAX requests
+const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || '{{ csrf_token }}';
+
+// API Endpoints
+const API = {
+  products: '/api/products/',
+  productDetail: (id) => `/api/products/${id}/`,
+  categories: '/api/categories/',
+  cart: '/api/cart/',
+  cartAdd: '/api/cart/add/',
+  cartUpdate: '/api/cart/update/',
+  cartRemove: '/api/cart/remove/',
+  checkout: '/api/checkout/'
+};
+
+// ============================================
+// CART MANAGEMENT
+// ============================================
+
+// Cart state
+let cart = [];
+let cartTotal = 0;
+
+// Initialize cart on page load
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadCart();
+  await loadProducts();
+  updateCartCount();
+  setupEventListeners();
+});
+
+// Load cart from backend
+async function loadCart() {
+  try {
+    const response = await fetch(API.cart, {
+      headers: {
+        'X-CSRFToken': csrftoken,
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin'
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      cart = data.items || [];
+      cartTotal = data.total || 0;
+      updateCartCount();
+    }
+  } catch (error) {
+    console.error('Error loading cart:', error);
+  }
+}
+
+// Add to cart
+async function addToCart(sku, quantity = 1) {
+  try {
+    const response = await fetch(API.cartAdd, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        sku: sku,
+        quantity: quantity
+      }),
+      credentials: 'same-origin'
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      cart = data.items;
+      cartTotal = data.total;
+      updateCartCount();
+      showNotification(`${quantity} × ${data.product_name || 'Product'} added to cart!`);
+    } else {
+      const error = await response.json();
+      showNotification(error.message || 'Error adding to cart', 'error');
+    }
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    showNotification('Failed to add to cart. Please try again.', 'error');
+  }
+}
+
+// Update cart quantity
+async function updateCartItem(sku, quantity) {
+  try {
+    const response = await fetch(API.cartUpdate, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        sku: sku,
+        quantity: quantity
+      }),
+      credentials: 'same-origin'
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      cart = data.items;
+      cartTotal = data.total;
+      updateCartCount();
+      renderCartItems();
+    }
+  } catch (error) {
+    console.error('Error updating cart:', error);
+  }
+}
+
+// Remove from cart
+async function removeFromCart(sku) {
+  try {
+    const response = await fetch(API.cartRemove, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrftoken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        sku: sku
+      }),
+      credentials: 'same-origin'
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      cart = data.items;
+      cartTotal = data.total;
+      updateCartCount();
+      renderCartItems();
+      showNotification('Item removed from cart');
+    }
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+  }
+}
+
+// Update cart count display
+function updateCartCount() {
+  const cartCountEl = document.getElementById('cartCount');
+  const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+  cartCountEl.textContent = totalItems;
+}
+
+// Toggle cart modal
+async function toggleCart() {
+  await renderCartItems();
+  document.getElementById('cartModal').classList.add('active');
+}
+
+function closeCartModal() {
+  document.getElementById('cartModal').classList.remove('active');
+}
+
+// Render cart items in modal
+function renderCartItems() {
+  const container = document.getElementById('cartItemsContainer');
+  
+  if (!cart || cart.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 2rem;">
+        <i class="fas fa-shopping-cart" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 1rem;"></i>
+        <h3>Your cart is empty</h3>
+        <p style="color: var(--gray); margin-bottom: 1rem;">Browse our products and add items to your cart.</p>
+        <button class="btn btn-primary" onclick="closeCartModal()">Start Shopping</button>
+      </div>
+    `;
+    document.getElementById('cartTotal').textContent = 'KES 0';
+    return;
+  }
+  
+  let html = '';
+  cart.forEach(item => {
+    html += `
+      <div class="cart-item" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; border-bottom: 1px solid var(--border);">
+        <div style="width: 60px; height: 60px; background: var(--bg-light); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+          <i class="fas fa-${item.icon || 'box'}" style="font-size: 1.5rem; color: var(--gray);"></i>
+        </div>
+        <div style="flex: 1;">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.25rem;">${item.name}</h4>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-weight: 600; color: var(--primary);">KES ${item.price?.toLocaleString() || 0}</span>
+            <span style="color: var(--gray);">×</span>
+            <input type="number" value="${item.quantity}" min="1" max="${item.stock || 99}" 
+                   style="width: 60px; padding: 0.25rem; border: 1px solid var(--border); border-radius: var(--radius-sm);"
+                   onchange="updateCartItem('${item.sku}', this.value)">
+          </div>
+        </div>
+        <div style="font-weight: 600;">KES ${(item.price * item.quantity)?.toLocaleString() || 0}</div>
+        <button onclick="removeFromCart('${item.sku}')" style="background: none; border: none; color: var(--danger); cursor: pointer;">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+  document.getElementById('cartTotal').textContent = `KES ${cartTotal?.toLocaleString() || 0}`;
+}
+
+// ============================================
+// PRODUCT MANAGEMENT
+// ============================================
+
+// Filter state
+let currentFilters = {
+  category: 'all',
+  sector: 'all',
+  cert: 'all',
+  price: {{ default_price|default:25000 }},
+  search: '',
+  sort: 'relevance'
+};
+
+// Load products with filters
+async function loadProducts() {
+  // Build query string
+  const params = new URLSearchParams();
+  if (currentFilters.category !== 'all') params.append('category', currentFilters.category);
+  if (currentFilters.sector !== 'all') params.append('sector', currentFilters.sector);
+  if (currentFilters.cert !== 'all') params.append('certification', currentFilters.cert);
+  if (currentFilters.price) params.append('max_price', currentFilters.price);
+  if (currentFilters.search) params.append('search', currentFilters.search);
+  if (currentFilters.sort) params.append('ordering', getSortParam(currentFilters.sort));
+  
+  try {
+    const response = await fetch(`${API.products}?${params.toString()}`);
+    if (response.ok) {
+      const data = await response.json();
+      renderProducts(data.results || data);
+    }
+  } catch (error) {
+    console.error('Error loading products:', error);
+  }
+}
+
+// Get sort parameter for API
+function getSortParam(sortMethod) {
+  switch(sortMethod) {
+    case 'price-low': return 'price';
+    case 'price-high': return '-price';
+    case 'name': return 'name';
+    case 'newest': return '-created_at';
+    case 'popular': return '-sales_count';
+    default: return 'name';
+  }
+}
+
+// Render products in grid
+function renderProducts(products) {
+  const grid = document.getElementById('productGrid');
+  
+  if (!products || products.length === 0) {
+    grid.innerHTML = `
+      <div class="no-products" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+        <i class="fas fa-box-open" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 1rem;"></i>
+        <h3>No products found</h3>
+        <p style="color: var(--gray);">Try adjusting your filters or search criteria.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  let html = '';
+  products.forEach(product => {
+    const badge = getProductBadge(product);
+    const icon = product.icon || 'box';
+    const image = product.image ? `<img src="${product.image}" alt="${product.name}">` : `<i class="fas fa-${icon} product-image-placeholder"></i>`;
+    
+    html += `
+      <div class="product fade-in" 
+           data-product-id="${product.id}"
+           data-category="${product.category_slug || ''}" 
+           data-sector="${product.sector_slugs || ''}" 
+           data-cert="${product.cert_slugs || ''}"
+           data-price="${product.price}"
+           data-name="${product.name.toLowerCase()}">
+        
+        ${badge}
+        
+        <div class="product-image">
+          ${image}
+        </div>
+        
+        <h4>${product.name}</h4>
+        <div class="product-sku">${product.sku}</div>
+        
+        <ul class="product-features">
+          ${product.features ? product.features.slice(0, 4).map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('') : ''}
+        </ul>
+        
+        <div class="product-footer">
+          <div class="product-price">KES ${product.price?.toLocaleString() || 0}</div>
+          <div class="product-actions">
+            <button class="btn btn-outline" onclick="addToCart('${product.sku}')">
+              <i class="fas fa-cart-plus"></i> Cart
+            </button>
+            <button class="btn btn-primary" onclick="viewProduct(${product.id})">
+              <i class="fas fa-eye"></i> View
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  grid.innerHTML = html;
+}
+
+// Get product badge HTML
+function getProductBadge(product) {
+  if (product.is_best_seller) {
+    return '<div class="product-badge">Best Seller</div>';
+  } else if (product.is_new) {
+    return '<div class="product-badge pulse">New</div>';
+  } else if (product.stock_quantity < 10) {
+    return '<div class="product-badge danger">Limited Stock</div>';
+  } else if (product.is_on_sale) {
+    return '<div class="product-badge warning">Special Offer</div>';
+  }
+  return '';
+}
+
+// View product details
+async function viewProduct(productId) {
+  const modalBody = document.getElementById('modalBody');
+  modalBody.innerHTML = `
+    <div class="loading-spinner" style="text-align: center; padding: 2rem;">
+      <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+      <p>Loading product details...</p>
+    </div>
+  `;
+  
+  document.getElementById('productModal').classList.add('active');
+  
+  try {
+    const response = await fetch(API.productDetail(productId));
+    if (response.ok) {
+      const product = await response.json();
+      renderProductDetails(product);
+    }
+  } catch (error) {
+    console.error('Error loading product details:', error);
+    modalBody.innerHTML = `
+      <div style="text-align: center; padding: 2rem;">
+        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger); margin-bottom: 1rem;"></i>
+        <h3>Error loading product</h3>
+        <p style="color: var(--gray);">Please try again later.</p>
+      </div>
+    `;
+  }
+}
+
+// Render product details in modal
+function renderProductDetails(product) {
+  const modalBody = document.getElementById('modalBody');
+  document.getElementById('modalProductTitle').textContent = product.name;
+  
+  let featuresHtml = '';
+  if (product.features && product.features.length > 0) {
+    featuresHtml = `
+      <div class="product-detail-features">
+        <h5>Key Features</h5>
+        <ul>
+          ${product.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  
+  let specsHtml = '';
+  if (product.specifications && Object.keys(product.specifications).length > 0) {
+    specsHtml = `
+      <div class="product-detail-features">
+        <h5>Specifications</h5>
+        <ul>
+          ${Object.entries(product.specifications).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  
+  modalBody.innerHTML = `
+    <div class="product-detail">
+      <div class="product-detail-image">
+        ${product.image ? `<img src="${product.image}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: contain;">` : 
+          `<i class="fas fa-${product.icon || 'box'}" style="font-size: 4rem; color: var(--gray-light);"></i>`}
+      </div>
+      <div class="product-detail-info">
+        <h4>${product.name}</h4>
+        <div class="product-detail-sku">${product.sku}</div>
+        <div class="product-detail-price">KES ${product.price?.toLocaleString() || 0}</div>
+        <p class="product-detail-description">${product.description || ''}</p>
+        
+        ${featuresHtml}
+        ${specsHtml}
+        
+        <div class="quantity-selector">
+          <label for="modalQuantity">Quantity:</label>
+          <input type="number" id="modalQuantity" class="quantity-input" value="1" min="1" max="${product.stock_quantity || 99}">
+        </div>
+        
+        ${product.stock_quantity < 10 ? `
+          <p style="color: var(--danger); margin-top: 0.5rem;">
+            <i class="fas fa-exclamation-circle"></i> Only ${product.stock_quantity} left in stock!
+          </p>
+        ` : ''}
+      </div>
+    </div>
+  `;
+  
+  // Store current product SKU for cart addition
+  modalBody.dataset.currentSku = product.sku;
+  modalBody.dataset.currentProduct = JSON.stringify(product);
+}
+
+// Add to cart from modal
+function addToCartFromModal() {
+  const sku = document.getElementById('modalBody').dataset.currentSku;
+  const quantity = parseInt(document.getElementById('modalQuantity')?.value) || 1;
+  
+  if (sku) {
+    addToCart(sku, quantity);
+    closeModal();
+  }
+}
+
+// Close product modal
+function closeModal() {
+  document.getElementById('productModal').classList.remove('active');
+}
+
+// ============================================
+// FILTERING & SEARCH
+// ============================================
+
+function filterCategory(category) {
+  // Update active state
+  document.querySelectorAll('#categoryList .filter-item').forEach(item => {
+    item.classList.remove('active');
+    if (item.dataset.category === category) {
+      item.classList.add('active');
+    }
+  });
+  
+  currentFilters.category = category;
+  loadProducts();
+}
+
+function filterSector(sector) {
+  // Update active state
+  document.querySelectorAll('#sectorTags .tag').forEach(tag => {
+    if (tag.textContent.toLowerCase() === sector || 
+        (sector === 'all' && tag.textContent.toLowerCase() === 'all')) {
+      tag.classList.add('active');
+    } else if (tag.textContent.toLowerCase() !== 'all') {
+      tag.classList.remove('active');
+    }
+  });
+  
+  currentFilters.sector = sector === 'all' ? 'all' : sector;
+  loadProducts();
+}
+
+function filterCert(cert) {
+  // Update active state
+  document.querySelectorAll('#certTags .tag').forEach(tag => {
+    if (tag.textContent.toLowerCase() === cert ||
+        (cert === 'all' && tag.textContent.toLowerCase() === 'all')) {
+      tag.classList.add('active');
+    } else if (tag.textContent.toLowerCase() !== 'all') {
+      tag.classList.remove('active');
+    }
+  });
+  
+  currentFilters.cert = cert === 'all' ? 'all' : cert;
+  loadProducts();
+}
+
+function updatePriceRange(value) {
+  currentFilters.price = parseInt(value);
+  document.getElementById('priceValue').textContent = `KES ${parseInt(value).toLocaleString()}`;
+  loadProducts();
+}
+
+function searchProducts(query) {
+  currentFilters.search = query.toLowerCase();
+  loadProducts();
+}
+
+function sortProducts(method) {
+  currentFilters.sort = method;
+  loadProducts();
+}
+
+// ============================================
+// CHECKOUT
+// ============================================
+
+function checkout() {
+  if (!cart || cart.length === 0) {
+    showNotification('Your cart is empty', 'warning');
+    return;
+  }
+  window.location.href = '/checkout/';
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+function showNotification(message, type = 'success') {
+  const colors = {
+    success: 'var(--accent)',
+    error: 'var(--danger)',
+    warning: 'var(--warning)',
+    info: 'var(--primary)'
+  };
+  
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${colors[type] || colors.success};
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+  `;
+  
+  const icons = {
+    success: 'fa-check-circle',
+    error: 'fa-exclamation-circle',
+    warning: 'fa-exclamation-triangle',
+    info: 'fa-info-circle'
+  };
+  
+  notification.innerHTML = `
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <i class="fas ${icons[type] || icons.success}"></i>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.animation = 'slideOut 0.3s ease-out';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+function setupEventListeners() {
+  // Debounce search input
+  let searchTimeout;
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        searchProducts(e.target.value);
+      }, 300);
+    });
+  }
+}
+
+// Add CSS for notifications and loading states
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+  
+  .cart-item:hover {
+    background: var(--bg-light);
+  }
+`;
+document.head.appendChild(style);
+</script>
+
+<!-- CSRF Token for Django -->
+{% csrf_token %}
+
+</body>
+</html>

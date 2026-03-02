@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }} | Mehit Blog</title>
+    <meta name="description" content="{{ post.meta_description|default:post.excerpt }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    {% load static %}
+<!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHLVFTK4BV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WHLVFTK4BV');
+  </script>
+
+
+
+    <style>
+        /* Copy the same CSS variables from your blog_list.html */
+        :root {
+            --primary: #004aad;
+            --primary-dark: #003080;
+            --primary-light: #3a7bd5;
+            --primary-gradient: linear-gradient(135deg, #004aad, #3a7bd5);
+            --accent: #27ae60;
+            --accent-light: #6fcf97;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --dark: #020617;
+            
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Toolbar - Same as blog_list */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 74, 173, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s;
+        }
+
+        .toolbar.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .toolbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.875rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s;
+                z-index: 1000;
+                box-shadow: var(--shadow-2xl);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+        }
+
+        /* Blog Post Styles */
+        .post-wrapper {
+            margin-top: 100px;
+            padding: 2rem 0 4rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            gap: 0.75rem;
+        }
+
+        .post-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+
+        .post-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-meta i {
+            color: var(--primary);
+        }
+
+        .post-featured-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-2xl);
+            margin: 2rem 0 3rem;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .post-content {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+
+        .post-content h2 {
+            font-size: 2rem;
+            color: var(--gray-900);
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+            color: var(--gray-800);
+            margin: 2rem 0 1rem;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-600);
+            font-size: 1.125rem;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-xl);
+            margin: 2rem 0;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Author Section */
+        .author-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .author-info h3 {
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .author-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Source Section */
+        .source-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .source-section i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .source-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            margin-top: 4rem;
+        }
+
+        .related-posts h2 {
+            font-size: 2rem;
+            color: var(--gray-900);
+            margin-bottom: 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .related-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .related-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .related-content {
+            padding: 1.5rem;
+        }
+
+        .related-content h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+
+        .related-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .facebook { background: #1877f2; }
+        .twitter { background: #1da1f2; }
+        .linkedin { background: #0a66c2; }
+        .whatsapp { background: #25d366; }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Toolbar -->
+    <nav class="toolbar" id="toolbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Mehit</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/#problem">Problem</a>
+                <a href="/#approach">Approach</a>
+                <a href="/#how">How It Works</a>
+                <a href="/#who">Who We Serve</a>
+                <a href="{% url 'blog:blog_list' %}">Blog</a>
+                <a href="/#contact">Contact</a>
+                <a href="/store">Store</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="post-wrapper">
+        <div class="container">
+            <!-- Back to Blog Link -->
+            <a href="{% url 'blog:blog_list' %}" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+
+            <!-- Post Header -->
+            <article>
+                <header class="post-header">
+                    {% if post.category %}
+                    <span class="post-category">{{ post.category.name }}</span>
+                    {% endif %}
+                    
+                    <h1 class="post-title">{{ post.title }}</h1>
+                    
+                    <div class="post-meta">
+                        {% if post.author %}
+                        <span><i class="far fa-user"></i> {{ post.author.get_full_name|default:post.author.username }}</span>
+                        {% endif %}
+                        <span><i class="far fa-calendar"></i> {{ post.published_at|date:"F j, Y" }}</span>
+                        {% if post.source %}
+                        <span><i class="fas fa-globe"></i> {{ post.source.name }}</span>
+                        {% endif %}
+                    </div>
+                </header>
+
+                <!-- Featured Image -->
+                {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="post-featured-image">
+                {% endif %}
+
+                <!-- Post Content -->
+                <div class="post-content">
+                    {{ post.content|safe|linebreaks }}
+                </div>
+
+                <!-- Tags -->
+                {% if post.tags.all %}
+                <div class="post-tags">
+                    <strong>Tags:</strong>
+                    {% for tag in post.tags.all %}
+                    <a href="{% url 'blog:blog_tag' tag.slug %}" class="tag">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Author Section -->
+                {% if post.author %}
+                <div class="author-section">
+                    <div class="author-avatar">
+                        {{ post.author.get_full_name|default:post.author.username|slice:":1"|upper }}
+                    </div>
+                    <div class="author-info">
+                        <h3>{{ post.author.get_full_name|default:post.author.username }}</h3>
+                        <p>Author at Mehit</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Source Section -->
+                {% if post.source %}
+                <div class="source-section">
+                    <i class="fas fa-globe"></i>
+                    <h3>{{ post.source.name }}</h3>
+                    {% if post.source.website %}
+                    <a href="{{ post.source.website }}" target="_blank" class="source-link">
+                        Visit Source <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Share Buttons -->
+                <div class="share-buttons">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="share-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ post.title }}" target="_blank" class="share-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ post.title }}" target="_blank" class="share-btn linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://wa.me/?text={{ post.title }}%20{{ request.build_absolute_uri }}" target="_blank" class="share-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="/" class="logo" style="color: white; background: none; -webkit-text-fill-color: white;">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Mehit</span>
+                    </a>
+                    <p style="color: rgba(255, 255, 255, 0.7);">Life-Changing Technology for Everyday Challenges.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#problem">The Problem</a></li>
+                        <li><a href="/#approach">Our Approach</a></li>
+                        <li><a href="{% url 'blog:blog_list' %}">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Mehit Technologies. All rights reserved. Nairobi, Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    menuToggle.innerHTML = navLinks.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            // Scroll effect
+            const toolbar = document.getElementById('toolbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    toolbar.classList.add('scrolled');
+                } else {
+                    toolbar.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
