@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy · mehit.app</title>
+  <!-- Font Awesome + Google Font Inter (same as questionnaire) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
+  <style>
+    /* --- mehit.app brand colours (exactly as questionnaire) --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    :root {
+      --primary: #004aad;
+      --primary-dark: #003080;
+      --primary-light: #3a7bd5;
+      --accent: #27ae60;
+      --accent-light: #6fcf97;
+      --danger: #e74c3c;
+      --warning: #f39c12;
+      --black: #111827;
+      --gray-dark: #374151;
+      --gray: #6b7280;
+      --gray-light: #9ca3af;
+      --border: #e5e7eb;
+      --bg-light: #f8f9fb;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --radius: 0.5rem;
+    }
+    body {
+      background: var(--bg-white);
+      color: var(--black);
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .policy-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 1.5rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .logo-icon {
+      color: var(--accent);
+      font-size: 2rem;
+    }
+    .last-updated {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 1.5rem 0 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gray-dark);
+      margin: 1.5rem 0 0.75rem;
+    }
+    p, li {
+      color: var(--gray-dark);
+      margin-bottom: 0.75rem;
+    }
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.4rem;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .highlight-box {
+      background: var(--bg-light);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .contact-details {
+      background: var(--bg-light);
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius);
+      margin-top: 1rem;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .footer-note {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      text-align: center;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+    /* print-friendly */
+    @media print {
+      body { padding: 0.5in; }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-light);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="policy-header">
+    <div class="logo">
+      <i class="fas fa-shield-alt logo-icon"></i>
+      <span>mehit.app</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <div class="last-updated">
+      <strong>Effective Date:</strong> {{ effective_date }}<br>
+      <strong>Last Updated:</strong> {{ last_updated }}<br>
+      <strong>Version:</strong> {{ policy_version }}
+    </div>
+  </div>
+
+  <!-- ==================== 1. INTRODUCTION ==================== -->
+  <h2>1. Introduction</h2>
+  <p>{{ company_name }} ("we", "us", "our") is committed to protecting your privacy and ensuring that your personal data is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="{{ website_url }}">{{ website_url }}</a>, use our mobile application {% if app_name %}“{{ app_name }}”{% else %}[app name]{% endif %}, or engage with our services.</p>
+  <p>We comply with the <strong>Kenya Data Protection Act, 2019</strong> (the "Act") and the relevant regulations issued by the Office of the Data Protection Commissioner (ODPC). Please read this policy carefully to understand our views and practices regarding your personal data.</p>
+
+  <!-- ==================== 2. WHO WE ARE ==================== -->
+  <h2>2. Who We Are</h2>
+  <div class="highlight-box">
+    <p><strong>Company Name:</strong> {{ company_name }}<br>
+    {% if business_reg %}<strong>Registration Number:</strong> {{ business_reg }}<br>{% endif %}
+    <strong>Physical Address:</strong> {{ physical_address }}<br>
+    <strong>Postal Address:</strong> {{ postal_address }}<br>
+    <strong>Email:</strong> <a href="mailto:{{ contact_email }}">{{ contact_email }}</a><br>
+    <strong>Phone:</strong> {{ contact_phone }}<br>
+    <strong>Website:</strong> <a href="{{ website_url }}">{{ website_url }}</a><br>
+    <strong>Mobile App:</strong> {{ app_name|default:"[Not applicable]" }}</p>
+    <p>We are the <strong>data controller</strong> (as defined in the Act) for the purposes of your personal data.</p>
+  </div>
+
+  <!-- ==================== 3. WHAT PERSONAL DATA WE COLLECT ==================== -->
+  <h2>3. What Personal Data We Collect</h2>
+  <p>We may collect, use, store and transfer different kinds of personal data about you. We have grouped these as follows:</p>
+
+  <h3>3.1 Categories of personal data</h3>
+  <ul>
+    <li><strong>Identity Data:</strong> full name, username or similar identifier, marital status, title, date of birth, gender, national ID number, passport number, KRA PIN, NSSF, NHIF, or other government-issued identifiers.</li>
+    <li><strong>Contact Data:</strong> billing address, delivery address, email address, telephone numbers, and emergency contact details.</li>
+    <li><strong>Financial Data:</strong> bank account details, M‑PESA transaction records, payment card information, income details, credit history, and credit reference bureau reports.</li>
+    <li><strong>Technical Data:</strong> internet protocol (IP) address, login data, browser type and version, time zone setting and location, browser plug‑in types and versions, operating system and platform, and other technology on the devices you use to access our services.</li>
+    <li><strong>Profile Data:</strong> your username and password, purchases or orders made by you, your interests, preferences, feedback and survey responses.</li>
+    <li><strong>Usage Data:</strong> information about how you use our website, products and services, including your browsing patterns, clickstream data, and interactions with our content.</li>
+    <li><strong>Marketing and Communications Data:</strong> your preferences in receiving marketing from us and our third parties, and your communication preferences.</li>
+    <li><strong>Sensitive Data:</strong> (where applicable) health information, genetic or biometric data, religious or philosophical beliefs, political opinions, trade union membership, sexual orientation, criminal records, or children’s data. We only process sensitive data where we have obtained your explicit consent, or where it is necessary for legal, employment, or social security obligations.</li>
+  </ul>
+
+  <h3>3.2 Special categories (if you are a minor)</h3>
+  <p>If you are under 18 years of age, we will obtain parental or guardian consent before collecting your personal data. Parents/guardians may exercise the rights set out in Section 10 on behalf of the child.</p>
+
+  <!-- ==================== 4. HOW WE COLLECT YOUR PERSONAL DATA ==================== -->
+  <h2>4. How We Collect Your Personal Data</h2>
+  <p>We use different methods to collect data from and about you, including:</p>
+  <ul>
+    <li><strong>Direct interactions:</strong> You may give us your Identity, Contact, and Financial Data by filling in forms, corresponding with us by phone, email, SMS, or otherwise. This includes personal data you provide when you:
+      <ul>
+        <li>apply for our products or services;</li>
+        <li>create an account on our website or app;</li>
+        <li>subscribe to our newsletter or other publications;</li>
+        <li>request marketing to be sent to you;</li>
+        <li>enter a competition, promotion or survey; or</li>
+        <li>give us feedback or contact us.</li>
+      </ul>
+    </li>
+    <li><strong>Automated technologies or interactions:</strong> As you interact with our website or app, we may automatically collect Technical Data about your equipment, browsing actions and patterns. We collect this personal data by using cookies, server logs, and other similar technologies. Please see our <a href="#">Cookie Policy</a> for further details.</li>
+    <li><strong>Third parties or publicly available sources:</strong> We may receive personal data about you from various third parties and public sources, such as:
+      <ul>
+        <li>Public registries (e.g., eCitizen, Companies Registry, land registry);</li>
+        <li>Credit reference bureaus (CRBs) for credit checks;</li>
+        <li>Partner organisations that you have authorised to share your information;</li>
+        <li>Social media platforms (if you interact with our pages);</li>
+        <li>Data brokers or aggregators;</li>
+        <li>Government agencies (where legally required).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- ==================== 5. HOW WE USE YOUR PERSONAL DATA ==================== -->
+  <h2>5. How We Use Your Personal Data</h2>
+  <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Purpose/Activity</th>
+        <th>Type of data</th>
+        <th>Lawful basis for processing including basis of legitimate interest</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>To register you as a new customer</td>
+        <td>(a) Identity<br>(b) Contact</td>
+        <td>Performance of a contract with you</td>
+      </tr>
+      <tr>
+        <td>To process and deliver your order including: (a) Manage payments, fees and charges (b) Collect and recover money owed to us</td>
+        <td>(a) Identity<br>(b) Contact<br>(c) Financial<br>(d) Transaction<br>(e) Marketing and Communications</td>
+        <td>(a) Performance of a contract with you<br>(b) Necessary for our legitimate interests (to recover debts due to us)</td>
+      </tr>
+      <tr>
+        <td>To manage our relationship with you which will include: (a) Notifying you about changes to our terms or privacy policy (b) Asking you to leave a review or take a survey</td>
+        <td>(a) Identity<br>(b) Contact<br>(c) Profile<br>(d) Marketing and Communications</td>
+        <td>(a) Performance of a contract with you<br>(b) Necessary to comply with a legal obligation<br>(c) Necessary for our legitimate interests (to keep our records updated and to study how customers use our products/services)</td>
+      </tr>
+      <tr>
+        <td>To enable you to partake in a prize draw, competition or complete a survey</td>
+        <td>(a) Identity<br>(b) Contact<br>(c) Profile<br>(d) Usage<br>(e) Marketing and Communications</td>
+        <td>(a) Performance of a contract with you<br>(b) Necessary for our legitimate interests (to study how customers use our products/services, to develop them and grow our business)</td>
+      </tr>
+      <tr>
+        <td>To administer and protect our business and this website (including troubleshooting, data analysis, testing, system maintenance, support, reporting and hosting of data)</td>
+        <td>(a) Identity<br>(b) Contact<br>(c) Technical</td>
+        <td>(a) Necessary for our legitimate interests (for running our business, provision of administration and IT services, network security, to prevent fraud)<br>(b) Necessary to comply with a legal obligation</td>
+      </tr>
+      <tr>
+        <td>To deliver relevant website content and advertisements to you and measure or understand the effectiveness of the advertising we serve to you</td>
+        <td>(a) Identity<br>(b) Contact<br>(c) Profile<br>(d) Usage<br>(e) Marketing and Communications<br>(f) Technical</td>
+        <td>Necessary for our legitimate interests (to study how customers use our products/services, to develop them, to grow our business and to inform our marketing strategy)</td>
+      </tr>
+      <tr>
+        <td>To use data analytics to improve our website, products/services, marketing, customer relationships and experiences</td>
+        <td>(a) Technical<br>(b) Usage</td>
+        <td>Necessary for our legitimate interests (to define types of customers for our products and services, to keep our website updated and relevant, to develop our business and to inform our marketing strategy)</td>
+      </tr>
+      <tr>
+        <td>To make suggestions and recommendations to you about goods or services that may be of interest to you</td>
+        <td>(a) Identity<br>(b) Contact<br>(c) Technical<br>(d) Usage<br>(e) Profile</td>
+        <td>Necessary for our legitimate interests (to develop our products/services and grow our business)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>5.1 Sensitive data</h3>
+  <p>If we process any sensitive personal data (as listed in section 3.1), we will obtain your explicit consent before doing so, unless another legal basis applies (e.g., legal obligation, vital interests). You have the right to withdraw consent at any time.</p>
+
+  <h3>5.2 Automated decision-making</h3>
+  <p>{{ automated_decision_making|default:"We do not currently use automated decision-making (including profiling) for credit scoring, fraud detection, or personalised marketing. If this changes, we will update this policy and, where required, obtain your consent." }}</p>
+
+  <!-- ==================== 6. COOKIES AND TRACKING TECHNOLOGIES ==================== -->
+  <h2>6. Cookies and Tracking Technologies</h2>
+  <p>Our website and app use cookies and similar tracking technologies (such as pixels, SDKs, and local storage) to distinguish you from other users. This helps us provide you with a good experience when you browse and also allows us to improve our site.</p>
+  <p>We use the following types of cookies:</p>
+  <ul>
+    <li><strong>Strictly necessary cookies:</strong> Required for the website to function (e.g., login, shopping cart).</li>
+    <li><strong>Functional cookies:</strong> Remember your preferences and choices.</li>
+    <li><strong>Performance/analytics cookies:</strong> Help us understand how visitors interact with our site.</li>
+    <li><strong>Targeting/advertising cookies:</strong> Deliver relevant ads and measure campaign effectiveness.</li>
+  </ul>
+  <p>You can set your browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. If you disable or refuse cookies, please note that some parts of this website may become inaccessible or not function properly.</p>
+  <p>For more detailed information, see our <a href="#">Cookie Policy</a>.</p>
+
+  <!-- ==================== 7. DISCLOSURES OF YOUR PERSONAL DATA ==================== -->
+  <h2>7. Disclosures of Your Personal Data</h2>
+  <p>We may share your personal data with the following categories of third parties for the purposes set out in Section 5:</p>
+  <ul>
+    <li>Service providers acting as processors who provide IT, system administration, cloud storage, payment processing, marketing, analytics, and other services.</li>
+    <li>Credit reference bureaus for the purpose of assessing your credit score and verifying your identity.</li>
+    <li>Debt collectors in the event of default.</li>
+    <li>Government authorities, regulators, or law enforcement where required by law, court order, or to protect our rights.</li>
+    <li>Professional advisers including lawyers, bankers, auditors and insurers who provide consultancy, banking, legal, insurance and accounting services.</li>
+    <li>Business partners, suppliers and sub‑contractors for the performance of any contract we enter into with them or you.</li>
+    <li>Third parties to whom we may choose to sell, transfer, or merge parts of our business or our assets. Alternatively, we may seek to acquire other businesses or merge with them. If a change happens to our business, then the new owners may use your personal data in the same way as set out in this privacy policy.</li>
+  </ul>
+  <p>We require all third parties to respect the security of your personal data and to treat it in accordance with the law. We do not allow our third‑party service providers to use your personal data for their own purposes and only permit them to process your personal data for specified purposes and in accordance with our instructions.</p>
+
+  <!-- ==================== 8. INTERNATIONAL TRANSFERS ==================== -->
+  <h2>8. International Transfers</h2>
+  <p>{{ international_transfers|default:"We do not currently transfer your personal data outside Kenya. If this changes, we will ensure appropriate safeguards are in place, such as standard contractual clauses approved by the ODPC, and update this policy accordingly." }}</p>
+
+  <!-- ==================== 9. DATA SECURITY ==================== -->
+  <h2>9. Data Security</h2>
+  <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know. They will only process your personal data on our instructions and they are subject to a duty of confidentiality.</p>
+  <p>We have put in place procedures to deal with any suspected personal data breach and will notify you and any applicable regulator (including the ODPC) of a breach where we are legally required to do so.</p>
+  <p>Our security measures include:</p>
+  <ul>
+    <li>Encryption of data at rest and in transit (TLS/SSL).</li>
+    <li>Two‑factor authentication for administrative access.</li>
+    <li>Firewalls, intrusion detection systems, and regular security patching.</li>
+    <li>Regular backups and disaster recovery procedures.</li>
+    <li>Staff training on data protection and confidentiality agreements.</li>
+  </ul>
+
+  <!-- ==================== 10. DATA RETENTION ==================== -->
+  <h2>10. Data Retention</h2>
+  <p>We will only retain your personal data for as long as reasonably necessary to fulfil the purposes we collected it for, including for the purposes of satisfying any legal, regulatory, tax, accounting or reporting requirements. We may retain your personal data for a longer period in the event of a complaint or if we reasonably believe there is a prospect of litigation in respect to our relationship with you.</p>
+  <p>To determine the appropriate retention period for personal data, we consider the amount, nature, and sensitivity of the personal data, the potential risk of harm from unauthorised use or disclosure, the purposes for which we process your personal data and whether we can achieve those purposes through other means, and the applicable legal requirements.</p>
+  <p>Examples of retention periods:</p>
+  <ul>
+    <li><strong>Customer data:</strong> While your account is active, plus {{ retention_customer|default:"[X]" }} years after last interaction to handle any queries or claims.</li>
+    <li><strong>Employee data:</strong> {{ retention_employee|default:"[X]" }} years after termination of employment, as required by labour laws.</li>
+    <li><strong>Financial records:</strong> 7 years (as required by the Tax Procedures Act).</li>
+    <li><strong>Website analytics data:</strong> 26 months (Google Analytics default).</li>
+  </ul>
+  <p>In some circumstances you can ask us to delete your data: see Section 11 below for further information.</p>
+
+  <!-- ==================== 11. YOUR LEGAL RIGHTS ==================== -->
+  <h2>11. Your Legal Rights</h2>
+  <p>Under the Kenya Data Protection Act, you have the following rights regarding your personal data:</p>
+  <ul>
+    <li><strong>Right to be informed</strong> – you have the right to be provided with clear, transparent and easily understandable information about how we use your personal data and your rights. This is why we are providing you with this policy.</li>
+    <li><strong>Right of access</strong> – you have the right to obtain confirmation that your personal data is being processed and request a copy of the personal data we hold about you.</li>
+    <li><strong>Right to rectification</strong> – you are entitled to have your personal data corrected if it is inaccurate or incomplete.</li>
+    <li><strong>Right to erasure (right to be forgotten)</strong> – you can request us to delete or remove your personal data in certain circumstances, such as where it is no longer necessary for the purpose we collected it, you withdraw consent, or you object and we have no overriding legitimate ground.</li>
+    <li><strong>Right to restrict processing</strong> – you have the right to ask us to suspend the processing of your personal data in certain situations, for example if you want us to establish its accuracy or the reason for processing it.</li>
+    <li><strong>Right to data portability</strong> – you have the right to ask us to provide your personal data to you in a structured, commonly used and machine‑readable format, and to transmit that data to another data controller.</li>
+    <li><strong>Right to object</strong> – you have the right to object to processing based on our legitimate interests (including profiling) or for direct marketing purposes.</li>
+    <li><strong>Rights in relation to automated decision‑making and profiling</strong> – you have the right not to be subject to a decision based solely on automated processing which produces legal effects or similarly significantly affects you.</li>
+  </ul>
+  <p>If you wish to exercise any of these rights, please contact us using the details in Section 13. We will respond to your request within the timelines set by the Act (generally 7 days for access, 14 days for rectification/erasure). There is no charge for exercising your rights, unless your request is manifestly unfounded or excessive.</p>
+
+  <!-- ==================== 12. CHANGES TO THIS PRIVACY POLICY ==================== -->
+  <h2>12. Changes to This Privacy Policy</h2>
+  <p>We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, or operational reasons. Any updated version will be posted on our website with a revised "Last Updated" date. We encourage you to review this policy periodically. In case of material changes, we will notify you by email or through a prominent notice on our website.</p>
+
+  <!-- ==================== 13. CONTACT US ==================== -->
+  <h2>13. Contact Us</h2>
+  <p>If you have any questions about this Privacy Policy or wish to exercise your rights, please contact our Data Protection Officer (DPO) using the details below:</p>
+  <div class="contact-details">
+    <p><strong>Data Protection Officer</strong><br>
+    {{ dpo_name|default:"[DPO Name]" }}<br>
+    <strong>Email:</strong> <a href="mailto:{{ dpo_email }}">{{ dpo_email }}</a><br>
+    <strong>Phone:</strong> {{ dpo_phone }}<br>
+    <strong>Postal Address:</strong> {{ dpo_postal }}<br>
+    <strong>Physical Address:</strong> {{ dpo_physical }}</p>
+  </div>
+  <p>You also have the right to lodge a complaint with the <strong>Office of the Data Protection Commissioner (ODPC)</strong> if you are not satisfied with our response:</p>
+  <p>
+    Office of the Data Protection Commissioner<br>
+    Email: <a href="mailto:complaints@odpc.go.ke">complaints@odpc.go.ke</a><br>
+    Website: <a href="https://www.odpc.go.ke" target="_blank">www.odpc.go.ke</a><br>
+    Postal: P.O. Box 19426 – 00102, Nairobi, Kenya.
+  </p>
+
+  <hr>
+  <div class="footer-note">
+    © {{ current_year }} {{ company_name }}. All rights reserved. Powered by mehit.app.
+  </div>
+</body>
+</html>
