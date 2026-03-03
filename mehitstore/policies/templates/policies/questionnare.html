@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy policy generator · Kenya (complete 6‑step)</title>
+  <!-- Font Awesome + Google Font Inter -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
+  <style>
+    /* --- YOUR EXACT COLOUR VARIABLES --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    :root {
+      --primary: #004aad;
+      --primary-dark: #003080;
+      --primary-light: #3a7bd5;
+      --accent: #27ae60;
+      --accent-light: #6fcf97;
+      --danger: #e74c3c;
+      --danger-light: #ff8a7a;
+      --warning: #f39c12;
+      --black: #111827;
+      --gray-dark: #374151;
+      --gray: #6b7280;
+      --gray-light: #9ca3af;
+      --border: #e5e7eb;
+      --bg-light: #f8f9fb;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+      background: var(--bg-white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .logo-icon {
+      color: var(--accent);
+      font-size: 1.75rem;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .header-nav a {
+      font-size: 0.95rem;
+      color: var(--gray-dark);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .header-nav a:hover {
+      color: var(--primary);
+    }
+    .header-nav a:hover::after {
+      width: 100%;
+    }
+    /* hide e‑commerce clutter */
+    .cart-icon, .cart-count, .sidebar, .grid, .product, .store-header {
+      display: none;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .hero-subtitle {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .questionnaire-container {
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+    }
+    .progress-area {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+    .step-indicators {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+    .step-tag {
+      flex: 1;
+      min-width: 70px;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      border-bottom: 3px solid transparent;
+      padding-bottom: 0.5rem;
+    }
+    .step-tag.active {
+      border-bottom-color: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .progress-bar-bg {
+      background: var(--border);
+      height: 0.75rem;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      width: 0%;
+      height: 100%;
+      transition: width 0.3s;
+    }
+
+    .step {
+      display: none;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+    .step.active-step {
+      display: block;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--primary-light);
+      color: var(--primary);
+    }
+    .step-header i {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    .question-card {
+      background: var(--bg-light);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .question-label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: var(--black);
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: var(--gray);
+      background: rgba(0,74,173,0.05);
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+    .checkbox-group, .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 0.5rem 0;
+    }
+    .checkbox-group label, .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: var(--gray-dark);
+    }
+    input[type="text"], input[type="number"], input[type="email"], select, .question-input, textarea {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      width: 100%;
+      max-width: 500px;
+      transition: var(--transition);
+    }
+    textarea {
+      border-radius: var(--radius-md);
+      min-height: 80px;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0,74,173,0.15);
+      outline: none;
+    }
+    .inline-input {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-left: 1.8rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .inline-input input {
+      flex: 1 1 200px;
+    }
+
+    .conditional {
+      display: none;
+      margin-top: 1rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--accent-light);
+    }
+    .conditional.visible {
+      display: block;
+    }
+
+    .rights-contact-input {
+      margin-top: 0.5rem;
+      margin-left: 2rem;
+      display: none;
+    }
+    .rights-contact-input.visible {
+      display: block;
+    }
+    .rights-contact-input input {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2.5rem;
+    }
+    .btn {
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--gray-dark);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0,74,173,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline:hover {
+      background: var(--bg-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .btn:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    footer {
+      background: var(--bg-white);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">
+      <i class="fas fa-shield-alt logo-icon"></i>
+      <span>Mehit Privacy policy generator</span>
+    </a>
+    <div class="header-nav">
+      <a href="#" class="active">Privacy Policy Generator</a>
+      <a href="/contactus">Support</a>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">Kenya ODPC compliant</div>
+      <h1 class="hero-title">Privacy policy generator</h1>
+      <p class="hero-subtitle">Complete 6‑step questionnaire – covers all manual and digital data collection in Kenya.</p>
+    </div>
+  </section>
+
+  <div class="questionnaire-container">
+    <!-- CSRF token for Django -->
+    {% csrf_token %}
+
+    <div class="progress-area">
+      <div class="step-indicators">
+        <span class="step-tag" data-step="1">1. entity</span>
+        <span class="step-tag" data-step="2">2. data subjects</span>
+        <span class="step-tag" data-step="3">3. legal basis</span>
+        <span class="step-tag" data-step="4">4. sector details</span>
+        <span class="step-tag" data-step="5">5. sharing & rights</span>
+        <span class="step-tag" data-step="6">6. security</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-fill" id="progressFill" style="width:16.6%"></div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 1 – ENTITY ========== -->
+    <div class="step active-step" id="step1">
+      <div class="step-header"><i class="fa-regular fa-building"></i> <h2>Entity details</h2></div>
+      <div class="question-card">
+        <label class="question-label">Legal name of organisation / business</label>
+        <input type="text" name="legal_name" class="question-input" placeholder="e.g., Wema Enterprises Ltd">
+      </div>
+      <div class="question-card">
+        <label class="question-label">Business registration number <span class="hint">optional</span></label>
+        <input type="text" name="business_reg" class="question-input" placeholder="e.g., CPR/2023/123456 (leave blank if none)">
+      </div>
+      <div class="question-card">
+        <label class="question-label">Physical address in Kenya</label>
+        <input type="text" name="physical_address" class="question-input" placeholder="Nairobi, 10100, Moi Avenue">
+      </div>
+      <div class="question-card">
+        <label class="question-label">Postal address (if different)</label>
+        <input type="text" name="postal_address" class="question-input" placeholder="P.O. Box ...">
+      </div>
+      <div class="question-card">
+        <label class="question-label">Entity type under Kenyan law</label>
+        <div class="radio-group">
+          <label><input type="radio" name="entity_type" value="public"> Public entity (government / ministry)</label>
+          <label><input type="radio" name="entity_type" value="private"> Private company limited by shares</label>
+          <label><input type="radio" name="entity_type" value="guarantee"> Company limited by guarantee</label>
+          <label><input type="radio" name="entity_type" value="sole"> Sole proprietorship / partnership</label>
+          <label><input type="radio" name="entity_type" value="nonprofit"> Non‑profit / NGO / faith‑based</label>
+          <label><input type="radio" name="entity_type" value="foreign"> Foreign company operating in Kenya</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="entity_type" value="other"> Other <input type="text" name="entity_type_other" placeholder="specify"></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 2 – DATA SUBJECTS & SOURCES (with manual methods) ========== -->
+    <div class="step" id="step2">
+      <div class="step-header"><i class="fa-regular fa-address-card"></i> <h2>Data subjects & collected data</h2></div>
+      
+      <div class="question-card">
+        <label class="question-label">Website and app details</label>
+        <div style="display:flex; flex-direction: column; gap:0.8rem;">
+          <input type="text" name="website_url" placeholder="Website URL (e.g., https://mehit.app)">
+          <input type="text" name="app_name" placeholder="Mobile app name (if any)">
+          <input type="text" name="app_store_links" placeholder="App store links (optional)">
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">Who are the data subjects? (tick all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="data_subjects[]" value="customers"> Customers / clients</label>
+          <label><input type="checkbox" name="data_subjects[]" value="employees"> Employees / staff</label>
+          <label><input type="checkbox" name="data_subjects[]" value="students"> Students / minors</label>
+          <label><input type="checkbox" name="data_subjects[]" value="patients"> Patients</label>
+          <label><input type="checkbox" name="data_subjects[]" value="suppliers"> Suppliers / vendors</label>
+          <label><input type="checkbox" name="data_subjects[]" value="applicants"> Job applicants</label>
+          <label><input type="checkbox" name="data_subjects[]" value="subscribers"> Subscribers (newsletter)</label>
+          <label><input type="checkbox" name="data_subjects[]" value="contractors"> Contractors / freelancers</label>
+          <label><input type="checkbox" name="data_subjects[]" value="visitors"> Website visitors</label>
+          <label><input type="checkbox" name="data_subjects[]" value="beneficiaries"> Beneficiaries (NGO)</label>
+          <label><input type="checkbox" name="data_subjects[]" value="visitorsPhysical"> Physical visitors (office, gate, events)</label>
+          <label><input type="checkbox" name="data_subjects[]" value="drivers"> Drivers / vehicle owners (car park, gate)</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="data_subjects[]" value="otherSubjects"> Other <input type="text" name="other_subjects" placeholder="specify"></label>
+        </div>
+      </div>
+
+      <!-- Data sources with inline specify fields -->
+      <div class="question-card">
+        <label class="question-label">How do you collect data? (tick all that apply – includes manual Kenyan methods)</label>
+        <div class="checkbox-group" id="sourceGroup">
+          <!-- Digital / online -->
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="websiteForms"> Website forms / contact pages</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="mobileApp"> Mobile app (analytics, permissions)</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="cookies"> Cookies / tracking pixels</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="email"> Email correspondence</label>
+          
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="socialMedia"> Social media (public profiles, DMs)</label>
+          <div class="inline-input" data-depends="socialMedia">
+            <input type="text" name="data_sources_social_media_other" placeholder="Specify which platforms (e.g., Facebook, Instagram, TikTok)">
+          </div>
+
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="publicRegistries"> Public registries (e.g., eCitizen, CR12, lands registry)</label>
+          <div class="inline-input" data-depends="publicRegistries">
+            <input type="text" name="data_sources_public_registries_other" placeholder="Specify which registries">
+          </div>
+
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="creditBureaus"> Credit reference bureaus (CRB)</label>
+          
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="dataBrokers"> Marketing agencies / data brokers</label>
+          <div class="inline-input" data-depends="dataBrokers">
+            <input type="text" name="data_sources_data_brokers_other" placeholder="Specify agency names">
+          </div>
+
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="partnerOrgs"> Partner organisations / affiliates</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="governmentSources"> Government databases / ministries</label>
+
+          <!-- Phone / messaging -->
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="phoneCalls"> Phone calls (recorded or notes)</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="sms"> SMS / text messages</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="mpesaMessages"> M‑Pesa messages / transaction SMS</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="whatsapp"> WhatsApp / Telegram / Signal</label>
+
+          <!-- In-person / manual -->
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="paperForms"> Paper forms filled on‑site</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="manualLedgers"> Manual ledgers / notebooks / daybooks</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="gateRecords"> Security gate records / visitor logs</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="carPark"> Car park entry records / vehicle registration</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="cctv"> CCTV / video surveillance</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="photography"> Photographs / videos taken at events</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="doorToDoor"> Door‑to‑door surveys / field interviews</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="verbalNotes"> Verbal conversations (notes taken)</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="membershipCards"> Membership / loyalty cards (physical swipe)</label>
+          <label><input type="checkbox" name="data_sources[]" class="source-cb" value="biometricDevices"> Biometric devices (fingerprint scanners, facial recognition at gate)</label>
+
+          <!-- Other with specify -->
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="data_sources[]" class="source-cb" value="otherSource"> Other <input type="text" name="data_sources_other" placeholder="specify"></label>
+        </div>
+        <p class="hint" style="margin-top:0.5rem;">If you selected any item with a text box, please fill in the details.</p>
+      </div>
+
+      <!-- Categories of personal data (detailed) -->
+      <div class="question-card">
+        <label class="question-label">Categories of personal data collected (tick all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="data_categories[]" value="names"> Full names</label>
+          <label><input type="checkbox" name="data_categories[]" value="phone"> Phone numbers</label>
+          <label><input type="checkbox" name="data_categories[]" value="email"> Email addresses</label>
+          <label><input type="checkbox" name="data_categories[]" value="postal"> Postal address</label>
+          <label><input type="checkbox" name="data_categories[]" value="id"> ID / Passport / KRA PIN / NSSF / NHIF</label>
+          <label><input type="checkbox" name="data_categories[]" value="dob"> Date of birth / age</label>
+          <label><input type="checkbox" name="data_categories[]" value="gender"> Gender</label>
+          <label><input type="checkbox" name="data_categories[]" value="marital"> Marital status</label>
+          <label><input type="checkbox" name="data_categories[]" value="nextOfKin"> Next of kin / emergency contacts</label>
+          <label><input type="checkbox" name="data_categories[]" value="employment"> Employment history / occupation</label>
+          <label><input type="checkbox" name="data_categories[]" value="education"> Education history / qualifications</label>
+          <label><input type="checkbox" name="data_categories[]" value="professional"> Professional licenses / memberships</label>
+          <label><input type="checkbox" name="data_categories[]" value="financial"> Financial data (bank accounts, M‑PESA, income)</label>
+          <label><input type="checkbox" name="data_categories[]" value="credit"> Credit history / CRB reports</label>
+          <label><input type="checkbox" name="data_categories[]" value="property"> Property / land ownership details</label>
+          <label><input type="checkbox" name="data_categories[]" value="vehicle"> Vehicle registration / driving license details</label>
+          <label><input type="checkbox" name="data_categories[]" value="biometric"> Biometric (fingerprint, face, voice)</label>
+          <label><input type="checkbox" name="data_categories[]" value="photos"> Photos / CCTV footage</label>
+          <label><input type="checkbox" name="data_categories[]" value="ip"> IP address / device identifiers</label>
+          <label><input type="checkbox" name="data_categories[]" value="browser"> Browser type / cookies / tracking data</label>
+          <label><input type="checkbox" name="data_categories[]" value="location"> Location data (GPS, Wi‑Fi)</label>
+          <label><input type="checkbox" name="data_categories[]" value="socialHandle"> Social media handles / profiles</label>
+          <label><input type="checkbox" name="data_categories[]" value="healthData"> Health / medical data</label>
+          <label><input type="checkbox" name="data_categories[]" value="genetic"> Genetic data</label>
+          <label><input type="checkbox" name="data_categories[]" value="criminal"> Criminal records / court cases</label>
+          <label><input type="checkbox" name="data_categories[]" value="union"> Trade union membership</label>
+          <label><input type="checkbox" name="data_categories[]" value="political"> Political opinions</label>
+          <label><input type="checkbox" name="data_categories[]" value="religious"> Religious / philosophical beliefs</label>
+          <label><input type="checkbox" name="data_categories[]" value="gatePass"> Gate pass / visitor ID numbers</label>
+          <label><input type="checkbox" name="data_categories[]" value="carPlate"> Car number plate / vehicle details</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="data_categories[]" value="otherData"> Other <input type="text" name="data_categories_other" placeholder="specify"></label>
+        </div>
+      </div>
+
+      <!-- Mobile app permissions -->
+      <div class="question-card">
+        <label class="question-label">If you have a mobile app, what permissions does it request?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="app_permissions[]" value="location"> Location (GPS / network)</label>
+          <label><input type="checkbox" name="app_permissions[]" value="camera"> Camera</label>
+          <label><input type="checkbox" name="app_permissions[]" value="microphone"> Microphone</label>
+          <label><input type="checkbox" name="app_permissions[]" value="contacts"> Contacts / phonebook</label>
+          <label><input type="checkbox" name="app_permissions[]" value="sms"> SMS / MMS</label>
+          <label><input type="checkbox" name="app_permissions[]" value="storage"> Storage / photos</label>
+          <label><input type="checkbox" name="app_permissions[]" value="phone"> Phone / call logs</label>
+          <label><input type="checkbox" name="app_permissions[]" value="bluetooth"> Bluetooth / nearby devices</label>
+          <label><input type="checkbox" name="app_permissions[]" value="health"> Health data (HealthKit, Google Fit)</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="app_permissions[]" value="otherPermission"> Other <input type="text" name="app_permissions_other" placeholder="specify"></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 3 – LEGAL BASIS & PURPOSE ========== -->
+    <div class="step" id="step3">
+      <div class="step-header"><i class="fa-regular fa-file-lines"></i> <h2>Legal basis & purpose</h2></div>
+      <div class="question-card">
+        <label class="question-label">What is your legal basis for processing? (tick all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="legal_basis[]" value="consent"> Consent (people agreed)</label>
+          <label><input type="checkbox" name="legal_basis[]" value="contract"> Contract performance (necessary to provide service)</label>
+          <label><input type="checkbox" name="legal_basis[]" value="legal"> Legal obligation (e.g., tax laws, KRA, retirement benefits)</label>
+          <label><input type="checkbox" name="legal_basis[]" value="vital"> Vital interests (to protect someone's life)</label>
+          <label><input type="checkbox" name="legal_basis[]" value="public"> Public interest / official authority</label>
+          <label><input type="checkbox" name="legal_basis[]" value="legitimate"> Legitimate interests (our business interests, not overriding rights)</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="legal_basis[]" value="otherLegal"> Other <input type="text" name="legal_basis_other" placeholder="specify"></label>
+        </div>
+        <!-- if legitimate interests, ask for description -->
+        <div class="conditional" data-condition="legitimate" data-values="legitimate">
+          <label>Please describe the legitimate interests you rely on:</label>
+          <textarea name="legitimate_interest_desc" placeholder="e.g., fraud prevention, direct marketing, network security, internal administration..."></textarea>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">Why do you collect the data? (purposes – tick all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="purposes[]" value="service"> Service delivery / contract fulfilment</label>
+          <label><input type="checkbox" name="purposes[]" value="marketing"> Marketing / newsletters</label>
+          <label><input type="checkbox" name="purposes[]" value="hr"> Human resources / staff management</label>
+          <label><input type="checkbox" name="purposes[]" value="analytics"> Analytics / website improvement</label>
+          <label><input type="checkbox" name="purposes[]" value="security"> Security / fraud prevention</label>
+          <label><input type="checkbox" name="purposes[]" value="legalComp"> Legal compliance (e.g., reporting to authorities)</label>
+          <label><input type="checkbox" name="purposes[]" value="research"> Research (with consent / ethics approval)</label>
+          <label><input type="checkbox" name="purposes[]" value="creditAssessment"> Credit assessment / loan decisions</label>
+          <label><input type="checkbox" name="purposes[]" value="insurance"> Insurance underwriting / claims</label>
+          <label><input type="checkbox" name="purposes[]" value="healthcare"> Healthcare provision / patient care</label>
+          <label><input type="checkbox" name="purposes[]" value="education"> Educational administration</label>
+          <label><input type="checkbox" name="purposes[]" value="profiling"> Profiling / automated decision‑making</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="purposes[]" value="otherPurpose"> Other <input type="text" name="purposes_other" placeholder="specify"></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 4 – SECTOR SPECIFIC ========== -->
+    <div class="step" id="step4">
+      <div class="step-header"><i class="fa-regular fa-hospital"></i> <h2>Sector specific details</h2></div>
+      
+      <h3 style="color:var(--primary); margin: 1rem 0 0.5rem;">🏥 Health sector</h3>
+      <div class="question-card">
+        <label class="question-label">Type of health institution</label>
+        <div class="radio-group">
+          <label><input type="radio" name="health_type" value="hospital"> Hospital / clinic</label>
+          <label><input type="radio" name="health_type" value="lab"> Laboratory / pathology</label>
+          <label><input type="radio" name="health_type" value="pharmacy"> Pharmacy / chemist</label>
+          <label><input type="radio" name="health_type" value="telemed"> Telemedicine / e‑health</label>
+          <label><input type="radio" name="health_type" value="healthInsurance"> Health insurance</label>
+          <label><input type="radio" name="health_type" value="healthResearch"> Health research / clinical trials</label>
+          <label><input type="radio" name="health_type" value="noneHealth"> Not applicable</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="health_type" value="otherHealth"> Other <input type="text" name="health_type_other" placeholder="specify"></label>
+        </div>
+        <div style="margin-top:1rem;">
+          <label>Do you use an Electronic Medical Records (EMR) system or Health Information System?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="emr" value="onprem"> Yes, on‑premise</label>
+            <label><input type="radio" name="emr" value="cloud"> Yes, cloud‑based</label>
+            <label><input type="radio" name="emr" value="no"> No</label>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <label>Do you process data for research purposes with ethics approval?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="health_research_approval" value="yes"> Yes</label>
+            <label><input type="radio" name="health_research_approval" value="no"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color:var(--primary); margin: 2rem 0 0.5rem;">🎓 Education sector</h3>
+      <div class="question-card">
+        <label class="question-label">Type of educational institution</label>
+        <div class="radio-group">
+          <label><input type="radio" name="edu_type" value="primary"> Pre‑primary / primary</label>
+          <label><input type="radio" name="edu_type" value="secondary"> Secondary</label>
+          <label><input type="radio" name="edu_type" value="university"> University / college</label>
+          <label><input type="radio" name="edu_type" value="vocational"> Vocational training</label>
+          <label><input type="radio" name="edu_type" value="elearn"> E‑learning platform</label>
+          <label><input type="radio" name="edu_type" value="noneEdu"> Not applicable</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="edu_type" value="otherEdu"> Other <input type="text" name="edu_type_other" placeholder="specify"></label>
+        </div>
+        <div class="conditional" data-condition="eduType" data-values="primary,secondary,university,vocational,elearn,otherEdu">
+          <label>Do you process minors' data?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="minors_edu" value="yes"> Yes (with parental consent)</label>
+            <label><input type="radio" name="minors_edu" value="no"> No / adults only</label>
+          </div>
+          <label>How do you obtain parental consent?</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="parental_consent_methods[]" value="physicalForm"> Physical consent form</label>
+            <label><input type="checkbox" name="parental_consent_methods[]" value="digital"> Digital / email consent</label>
+            <label><input type="checkbox" name="parental_consent_methods[]" value="portal"> Parent portal</label>
+            <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="parental_consent_methods[]" value="otherConsent"> Other <input type="text" name="parental_consent_other" placeholder="specify"></label>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="color:var(--primary); margin: 2rem 0 0.5rem;">📶 Telecom / communications</h3>
+      <div class="question-card">
+        <label class="question-label">Do you process any of the following?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="telecom_data_types[]" value="subscriberData"> Subscriber registration (SIM)</label>
+          <label><input type="checkbox" name="telecom_data_types[]" value="traffic"> Traffic / metadata (call records, internet usage)</label>
+          <label><input type="checkbox" name="telecom_data_types[]" value="location"> Location data (cell tower, GPS)</label>
+          <label><input type="checkbox" name="telecom_data_types[]" value="billing"> Billing / financial data</label>
+          <label><input type="checkbox" name="telecom_data_types[]" value="valueAdded"> Value‑added services (advertising, content)</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="telecom_data_types[]" value="otherTelecom"> Other <input type="text" name="telecom_data_types_other" placeholder="specify"></label>
+        </div>
+        <label style="margin-top:1rem;">Do you share data with third‑party value‑added service providers?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="share_vas" value="yes"> Yes</label>
+          <label><input type="radio" name="share_vas" value="no"> No</label>
+        </div>
+      </div>
+
+      <h3 style="color:var(--primary); margin: 2rem 0 0.5rem;">💰 Finance sector</h3>
+      <div class="question-card">
+        <label class="question-label">Type of financial service (tick all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="finance_service_types[]" value="banking"> Banking (current/savings accounts)</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="digitalCredit"> Digital credit provider (mobile loans)</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="microfinance"> Microfinance institution</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="insurance"> Insurance (life, health, asset)</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="mobileMoney"> Mobile money operator (M‑PESA, T‑Cash)</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="investment"> Investment / asset management</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="forex"> Forex / currency exchange</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="remittance"> Remittance / money transfer</label>
+          <label><input type="checkbox" name="finance_service_types[]" value="creditBureau"> Credit reference bureau (CRB)</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="finance_service_types[]" value="otherFinance"> Other <input type="text" name="finance_service_types_other" placeholder="specify"></label>
+        </div>
+        <div style="margin-top:1rem;">
+          <label>Do you report to a Credit Reference Bureau (CRB)?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="crb_reporting" value="yes"> Yes</label>
+            <label><input type="radio" name="crb_reporting" value="no"> No</label>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <label>Do you conduct credit checks / affordability assessments?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="credit_check" value="yes"> Yes</label>
+            <label><input type="radio" name="credit_check" value="no"> No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 5 – SHARING, COOKIES & RIGHTS ========== -->
+    <div class="step" id="step5">
+      <div class="step-header"><i class="fa-regular fa-share-nodes"></i> <h2>Sharing, cookies & rights</h2></div>
+      
+      <div class="question-card">
+        <label class="question-label">Do you share data with third parties?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="share_third" value="yes"> Yes</label>
+          <label><input type="radio" name="share_third" value="no"> No</label>
+        </div>
+        <div class="conditional" data-condition="shareThird" data-values="yes">
+          <label>Who are the recipients? (tick all that apply)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="third_parties[]" value="gov"> Government agencies (KRA, Registrar of Persons, etc.)</label>
+            <label><input type="checkbox" name="third_parties[]" value="payment"> Payment processors (M‑PESA, banks, PesaLink)</label>
+            <label><input type="checkbox" name="third_parties[]" value="cloud"> Cloud service providers (AWS, Google Cloud, Azure)</label>
+            <label><input type="checkbox" name="third_parties[]" value="emailM"> Email marketing platforms (Mailchimp, Sendy)</label>
+            <label><input type="checkbox" name="third_parties[]" value="analytics"> Analytics providers (Google Analytics, Meta Pixel)</label>
+            <label><input type="checkbox" name="third_parties[]" value="debt"> Debt collectors / credit reference bureaus</label>
+            <label><input type="checkbox" name="third_parties[]" value="lawEnforcement"> Law enforcement (with court order)</label>
+            <label><input type="checkbox" name="third_parties[]" value="partners"> Business partners / joint ventures</label>
+            <label><input type="checkbox" name="third_parties[]" value="subsidiaries"> Subsidiaries / affiliates</label>
+            <label><input type="checkbox" name="third_parties[]" value="public"> Public registers (e.g., e‑citizen, land registry)</label>
+            <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="third_parties[]" value="otherRecipient"> Other <input type="text" name="third_parties_other" placeholder="specify"></label>
+          </div>
+          <label style="margin-top:0.8rem;">Do you have data processing agreements (DPAs) with these third parties?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="dpa_status" value="all"> Yes, with all</label>
+            <label><input type="radio" name="dpa_status" value="some"> With some</label>
+            <label><input type="radio" name="dpa_status" value="no"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">Do you transfer data outside Kenya?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="cross_border" value="yes"> Yes</label>
+          <label><input type="radio" name="cross_border" value="no"> No</label>
+        </div>
+        <div class="conditional" data-condition="crossBorder" data-values="yes">
+          <label>Destination countries / regions</label>
+          <input type="text" name="destination_countries" class="question-input" placeholder="e.g., USA, UK, EU, Uganda, South Africa">
+          <label>What safeguard do you rely on?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="safeguard" value="adequate"> Adequacy decision (EU, etc.)</label>
+            <label><input type="radio" name="safeguard" value="consent"> Explicit consent from data subject</label>
+            <label><input type="radio" name="safeguard" value="clauses"> Standard contractual clauses (SCCs)</label>
+            <label><input type="radio" name="safeguard" value="contract"> Necessary for contract performance</label>
+            <label><input type="radio" name="safeguard" value="public"> Public interest / legal claim</label>
+            <label><input type="radio" name="safeguard" value="binding"> Binding corporate rules (BCR)</label>
+            <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="safeguard" value="otherSafeguard"> Other <input type="text" name="safeguard_other" placeholder="specify"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">Do you use cookies or tracking technologies?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="cookies[]" value="cookies"> HTTP cookies (session, persistent)</label>
+          <label><input type="checkbox" name="cookies[]" value="pixels"> Tracking pixels / web beacons</label>
+          <label><input type="checkbox" name="cookies[]" value="sdks"> SDKs / third‑party libraries (mobile)</label>
+          <label><input type="checkbox" name="cookies[]" value="fingerprint"> Browser / device fingerprinting</label>
+          <label><input type="checkbox" name="cookies[]" value="localStorage"> Local storage / IndexedDB</label>
+          <label><input type="checkbox" name="cookies[]" value="sessionReplay"> Session replay / heatmaps</label>
+          <label><input type="checkbox" name="cookies[]" value="noTrack"> No tracking</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="cookies[]" value="otherTrack"> Other <input type="text" name="cookies_other" placeholder="specify"></label>
+        </div>
+        <label style="margin-top:0.8rem;">What kind of cookie consent banner do you have?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="cookie_banner" value="optin"> Opt‑in before non‑essential cookies</label>
+          <label><input type="radio" name="cookie_banner" value="notice"> Notice only (implied consent)</label>
+          <label><input type="radio" name="cookie_banner" value="no"> No banner</label>
+        </div>
+      </div>
+
+      <div class="question-card" id="rightsCard">
+        <label class="question-label">How can people exercise their data protection rights? (tick all that apply and provide details)</label>
+        <div class="checkbox-group" id="rightsCheckboxGroup">
+          <div class="rights-option">
+            <label><input type="checkbox" name="rights_methods[]" class="rights-method" value="portal"> Online portal / account self‑service</label>
+            <div class="rights-contact-input" data-method="portal">
+              <input type="text" name="rights_portal_url" placeholder="Portal URL (e.g., https://example.com/account)">
+            </div>
+          </div>
+          <div class="rights-option">
+            <label><input type="checkbox" name="rights_methods[]" class="rights-method" value="email"> Email to DPO / support</label>
+            <div class="rights-contact-input" data-method="email">
+              <input type="email" name="rights_email" placeholder="Email address (e.g., dpo@example.com)">
+            </div>
+          </div>
+          <div class="rights-option">
+            <label><input type="checkbox" name="rights_methods[]" class="rights-method" value="phone"> Phone call</label>
+            <div class="rights-contact-input" data-method="phone">
+              <input type="text" name="rights_phone" placeholder="Phone number (e.g., +254 700 123456)">
+            </div>
+          </div>
+          <div class="rights-option">
+            <label><input type="checkbox" name="rights_methods[]" class="rights-method" value="physical"> Physical form / in‑person</label>
+            <div class="rights-contact-input" data-method="physical">
+              <input type="text" name="rights_physical" placeholder="Physical address / office location">
+            </div>
+          </div>
+          <div class="rights-option">
+            <label><input type="checkbox" name="rights_methods[]" class="rights-method" value="postal"> Postal mail</label>
+            <div class="rights-contact-input" data-method="postal">
+              <input type="text" name="rights_postal" placeholder="Postal address (P.O. Box ...)">
+            </div>
+          </div>
+          <div class="rights-option">
+            <label><input type="checkbox" name="rights_methods[]" class="rights-method" value="authorised"> Through an authorised agent</label>
+            <div class="rights-contact-input" data-method="authorised">
+              <input type="text" name="rights_authorised" placeholder="Instructions for agent verification">
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <label>What is your target response time for rights requests?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="response_time" value="7"> Within 7 days (ODPC guidance)</label>
+            <label><input type="radio" name="response_time" value="14"> Within 14 days</label>
+            <label><input type="radio" name="response_time" value="21"> Within 21 days</label>
+            <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="response_time" value="other"> Other <input type="text" name="response_time_other" placeholder="specify" style="width:140px"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 6 – SECURITY & RETENTION ========== -->
+    <div class="step" id="step6">
+      <div class="step-header"><i class="fa-regular fa-lock"></i> <h2>Security & data retention</h2></div>
+      
+      <div class="question-card">
+        <label class="question-label">What technical security measures do you have in place?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="tech_measures[]" value="encryptRest"> Encryption of data at rest (databases, backups)</label>
+          <label><input type="checkbox" name="tech_measures[]" value="encryptTransit"> Encryption in transit (TLS / HTTPS)</label>
+          <label><input type="checkbox" name="tech_measures[]" value="2fa"> Two‑factor authentication for staff / admin access</label>
+          <label><input type="checkbox" name="tech_measures[]" value="firewall"> Firewalls / intrusion detection / prevention</label>
+          <label><input type="checkbox" name="tech_measures[]" value="patching"> Regular security patching / updates</label>
+          <label><input type="checkbox" name="tech_measures[]" value="backups"> Regular encrypted backups</label>
+          <label><input type="checkbox" name="tech_measures[]" value="pseudonymization"> Pseudonymization / anonymization</label>
+          <label><input type="checkbox" name="tech_measures[]" value="minimization"> Data minimization (only collect what's needed)</label>
+          <label><input type="checkbox" name="tech_measures[]" value="penTesting"> Regular penetration testing / vulnerability scans</label>
+          <label><input type="checkbox" name="tech_measures[]" value="incidentResponse"> Formal incident response team / plan</label>
+          <label><input type="checkbox" name="tech_measures[]" value="accessLogs"> Access logs / audit trails</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="tech_measures[]" value="otherTech"> Other <input type="text" name="tech_measures_other" placeholder="specify"></label>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">What organisational measures do you have?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="org_measures[]" value="training"> Staff training on data protection</label>
+          <label><input type="checkbox" name="org_measures[]" value="accessCtrl"> Access controls (role‑based, least privilege)</label>
+          <label><input type="checkbox" name="org_measures[]" value="nda"> Confidentiality / non‑disclosure agreements</label>
+          <label><input type="checkbox" name="org_measures[]" value="audits"> Regular internal / external audits</label>
+          <label><input type="checkbox" name="org_measures[]" value="policy"> Written data protection policy</label>
+          <label><input type="checkbox" name="org_measures[]" value="breachProcedure"> Documented breach notification procedure</label>
+          <label><input type="checkbox" name="org_measures[]" value="dataProtectionByDesign"> Data protection by design / default</label>
+          <label><input type="checkbox" name="org_measures[]" value="dpoAppointed"> Data Protection Officer appointed</label>
+          <label class="inline-input" style="display:flex; margin-left:0;"><input type="checkbox" name="org_measures[]" value="otherOrg"> Other <input type="text" name="org_measures_other" placeholder="specify"></label>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">Do you have a data breach response plan?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="breach_plan" value="tested"> Yes, documented and tested</label>
+          <label><input type="radio" name="breach_plan" value="informal"> Yes, informal</label>
+          <label><input type="radio" name="breach_plan" value="no"> No</label>
+        </div>
+        <div class="conditional" data-condition="breachPlan" data-values="tested,informal">
+          <label>Briefly describe your breach notification process (who to contact, timelines):</label>
+          <textarea name="breach_process" placeholder="e.g., notify ODPC within 72 hours, affected individuals without undue delay..."></textarea>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">What is your data retention policy?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="retention_policy" value="delete"> Delete after a fixed period</label>
+          <label><input type="radio" name="retention_policy" value="archive"> Archive after a period</label>
+          <label><input type="radio" name="retention_policy" value="indefinite"> Indefinitely (justify)</label>
+        </div>
+        <div class="conditional" data-condition="retentionPolicy" data-values="delete,archive">
+          <label>Specify retention periods for different categories (if known):</label>
+          <div style="margin-top:0.5rem;">
+            <label>Customer data:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="retention_customer" value="active"> While account active + <input type="number" name="retention_customer_years" style="width:70px;" placeholder="years"> years</label>
+              <label><input type="radio" name="retention_customer" value="law"> As required by law (e.g., 7 years for financial)</label>
+              <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="retention_customer" value="otherCustomer"> Other <input type="text" name="retention_customer_other" placeholder="specify"></label>
+            </div>
+          </div>
+          <div style="margin-top:0.8rem;">
+            <label>Employee data:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="retention_employee" value="law"> As required by law (e.g., 5 years after employment)</label>
+              <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="retention_employee" value="otherEmployee"> Other <input type="text" name="retention_employee_other" placeholder="specify"></label>
+            </div>
+          </div>
+          <div style="margin-top:0.8rem;">
+            <label>Website / analytics data:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="retention_web" value="26m"> 26 months (Google Analytics default)</label>
+              <label class="inline-input" style="display:flex; margin-left:0;"><input type="radio" name="retention_web" value="otherWeb"> Other <input type="text" name="retention_web_other" placeholder="specify"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <label class="question-label">Do you have special provisions for children's data (under 18)?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="children_policy" value="yes"> Yes – we obtain parental consent and have special safeguards</label>
+          <label><input type="radio" name="children_policy" value="no"> No – we do not knowingly collect children's data</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- navigation buttons -->
+    <div class="navigation">
+      <button class="btn btn-outline" id="prevBtn" disabled><i class="fa-regular fa-arrow-left"></i> Back</button>
+      <button class="btn btn-primary" id="nextBtn">Next <i class="fa-regular fa-arrow-right"></i></button>
+    </div>
+    <p style="font-size:0.8rem; color:var(--gray); margin-top:1rem;"><i class="fa-regular fa-circle-info"></i> Your answers will be used to generate a custom privacy policy. Business registration number is optional. All other fields help us tailor the policy to your exact operations.</p>
+  </div>
+
+  <footer>
+    <span>© MEHIT CMP · Kenya ODPC‑compliant generator · complete 6‑step version with gate records, M‑PESA, manual ledgers</span>
+  </footer>
+
+  <script>
+    (function() {
+      // step navigation
+      const steps = document.querySelectorAll('.step');
+      const stepTags = document.querySelectorAll('.step-tag');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const progressFill = document.getElementById('progressFill');
+      let currentStep = 0;
+      const totalSteps = steps.length;
+
+      function updateUI() {
+        steps.forEach((s, i) => s.classList.toggle('active-step', i === currentStep));
+        stepTags.forEach((t, i) => t.classList.toggle('active', i === currentStep));
+        prevBtn.disabled = currentStep === 0;
+        if (currentStep === totalSteps-1) {
+          nextBtn.innerHTML = `Generate policy <i class="fa-regular fa-file-lines"></i>`;
+        } else {
+          nextBtn.innerHTML = `Next <i class="fa-regular fa-arrow-right"></i>`;
+        }
+        progressFill.style.width = ((currentStep+1)/totalSteps*100) + '%';
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (currentStep > 0) { currentStep--; updateUI(); }
+      });
+
+      // ---- Modified next button to call generatePolicy on last step ----
+      nextBtn.addEventListener('click', () => {
+        if (currentStep < totalSteps-1) {
+          currentStep++;
+          updateUI();
+        } else {
+          generatePolicy();
+        }
+      });
+
+      // Show inline inputs when checkboxes with data-depends are checked
+      function handleInlineInputs() {
+        document.querySelectorAll('.inline-input').forEach(el => {
+          // If this inline input is inside a .checkbox-group and has data-depends, control visibility by checkbox
+          const depends = el.dataset.depends;
+          if (depends) {
+            const cb = document.querySelector(`.source-cb[value="${depends}"]`);
+            if (cb) {
+              el.style.display = cb.checked ? 'flex' : 'none';
+            }
+          } else {
+            // For standalone inline inputs (like "Other" with checkbox inside), we handle differently:
+            // They are always visible if they contain a checkbox? Actually they are always visible as a flex row with checkbox.
+            // We don't want to hide those. So we only hide those with data-depends.
+          }
+        });
+      }
+
+      // Conditionals for radio/data-condition
+      function handleConditionals() {
+        document.querySelectorAll('.conditional').forEach(cond => {
+          const conditionAttr = cond.dataset.condition;
+          const valuesAttr = cond.dataset.values; // comma separated
+          if (!conditionAttr) return;
+          const inputs = document.querySelectorAll(`[name="${conditionAttr}"]`);
+          let show = false;
+          inputs.forEach(inp => {
+            if (inp.type === 'radio' || inp.type === 'checkbox') {
+              if (inp.checked && valuesAttr.split(',').includes(inp.value)) show = true;
+            } else if (inp.tagName === 'SELECT') {
+              if (valuesAttr.split(',').includes(inp.value)) show = true;
+            }
+          });
+          cond.classList.toggle('visible', show);
+        });
+      }
+
+      // rights contact fields toggle
+      const rightsCheckboxes = document.querySelectorAll('.rights-method');
+      rightsCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+          const method = this.value;
+          const contactDiv = document.querySelector(`.rights-contact-input[data-method="${method}"]`);
+          if (contactDiv) {
+            contactDiv.classList.toggle('visible', this.checked);
+          }
+        });
+      });
+
+      // Event listeners
+      document.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('change', () => {
+          handleConditionals();
+          handleInlineInputs();
+        });
+      });
+
+      window.addEventListener('load', () => {
+        handleConditionals();
+        handleInlineInputs();
+        // Also trigger on any pre-filled (none)
+      });
+
+      // ---------- NEW: generatePolicy function ----------
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      function collectFormData() {
+        const form = document.querySelector('.questionnaire-container');
+        const inputs = form.querySelectorAll('[name]');
+        const data = {};
+
+        inputs.forEach(input => {
+          const name = input.name;
+          // Skip CSRF token field
+          if (name === 'csrfmiddlewaretoken') return;
+
+          if (input.type === 'checkbox' || input.type === 'radio') {
+            if (!input.checked) return;
+            // If name ends with '[]', treat as array
+            if (name.endsWith('[]')) {
+              const base = name.slice(0, -2);
+              if (!data[base]) data[base] = [];
+              data[base].push(input.value);
+            } else {
+              data[name] = input.value;
+            }
+          } else {
+            // text, select, textarea
+            data[name] = input.value;
+          }
+        });
+        return data;
+      }
+
+      async function generatePolicy() {
+        const data = collectFormData();
+        const csrftoken = getCookie('csrftoken');
+
+        const response = await fetch('/policies/api/generate/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          // Redirect to the generated policy page (adjust URL as needed)
+          window.location.href = `/policies/${result.slug}/`;
+        } else {
+          alert('Error: ' + JSON.stringify(result));
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -15,6 +15,10 @@ urlpatterns = [
     
     # Store (all product-related URLs go under /store/)
     path('store/', include('products.urls')),
+
+    #  policies
+    path('policies/', include('policies.urls')),
+
 ]
 
 # Serve media files in development
