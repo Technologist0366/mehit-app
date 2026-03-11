@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up · mehit.app</title>
+  <!-- Font Awesome + Google Font Inter -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
+  <style>
+    /* --- mehit.app brand colours --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    :root {
+      --primary: #004aad;
+      --primary-dark: #003080;
+      --primary-light: #3a7bd5;
+      --accent: #27ae60;
+      --accent-light: #6fcf97;
+      --danger: #e74c3c;
+      --black: #111827;
+      --gray-dark: #374151;
+      --gray: #6b7280;
+      --gray-light: #9ca3af;
+      --border: #e5e7eb;
+      --bg-light: #f8f9fb;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+      --radius: 0.5rem;
+    }
+    body {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .signup-card {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      max-width: 500px;
+      width: 100%;
+      padding: 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    .logo-icon {
+      color: var(--accent);
+      font-size: 2rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0,74,173,0.15);
+      outline: none;
+    }
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,74,173,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .links {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .errorlist {
+      color: var(--danger);
+      list-style: none;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+    .helptext {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.25rem;
+      display: block;
+    }
+    .footer-note {
+      color: rgba(255,255,255,0.8);
+      margin-top: 2rem;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-card">
+    <div class="logo">
+      <i class="fas fa-shield-alt logo-icon"></i>
+      <span>mehit.app</span>
+    </div>
+    <h1>Create Account</h1>
+    <div class="subtitle">Get started with our privacy tools</div>
+
+    <form method="post">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="errorlist">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
+      <div class="form-group">
+        <label for="id_email">Email address</label>
+        <input type="email" name="email" id="id_email" placeholder="you@example.com" required>
+        {{ form.email.errors }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_phone_number">Phone number <span class="helptext">(optional)</span></label>
+        <input type="text" name="phone_number" id="id_phone_number" placeholder="0712345678">
+        {{ form.phone_number.errors }}
+      </div>
+
+      <div class="form-group">
+        <label for="id_password1">Password</label>
+        <input type="password" name="password1" id="id_password1" placeholder="••••••••" required>
+        {{ form.password1.errors }}
+        <span class="helptext">{{ form.password1.help_text }}</span>
+      </div>
+
+      <div class="form-group">
+        <label for="id_password2">Confirm password</label>
+        <input type="password" name="password2" id="id_password2" placeholder="••••••••" required>
+        {{ form.password2.errors }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <div class="links">
+      <p>Already have an account? <a href="{% url 'accounts:login' %}">Sign in</a></p>
+    </div>
+  </div>
+  <div class="footer-note">
+    © {% now "Y" %} mehit.app. All rights reserved.
+  </div>
+</body>
+</html>

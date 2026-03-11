@@ -12,6 +12,8 @@ from rest_framework import status
 from .models import PolicyTemplate, Policy
 from .serializers import PolicyGenerateSerializer, PolicySerializer
 from .services import PolicyGenerator
+import sys
+import traceback
 
 # ────────────────────────────── HTML PAGE VIEWS ──────────────────────────────
 @login_required
@@ -29,54 +31,77 @@ def policy_detail(request, slug):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def generate_policy(request):
+    print(">>> generate_policy view called")
     """
     Receive form data, generate policy, store it, and return the policy info.
     """
-    serializer = PolicyGenerateSerializer(data=request.data)
-    if not serializer.is_valid():
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    try:
+        serializer = PolicyGenerateSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    data = serializer.validated_data
+        data = serializer.validated_data
 
-    # Get the active template (you can extend this to select based on sector)
-    template = PolicyTemplate.objects.filter(is_active=True).first()
-    if not template:
-        return Response({'error': 'No active policy template'}, status=500)
+        # ---- Handle effective_date ----
+        # Get the date object (for the model) and also store a formatted string in data
+        effective_date_obj = None
+        if data.get('effective_date'):
+            # The serializer gives us a date object (since it's a DateField)
+            effective_date_obj = data['effective_date']
+            # Store a string version for the responses JSON
+            data['effective_date_str'] = effective_date_obj.strftime('%B %d, %Y')
+        else:
+            # If not provided, use today's date
+            effective_date_obj = timezone.now().date()
+            data['effective_date_str'] = effective_date_obj.strftime('%B %d, %Y')
 
-    # Add computed fields
-    data['current_year'] = datetime.now().year
-    if not data.get('effective_date'):
-        data['effective_date'] = timezone.now().date().strftime('%B %d, %Y')
+        # Remove the original date object from data so it doesn't cause JSON errors
+        if 'effective_date' in data:
+            del data['effective_date']
 
-    # Build any conditional sector sections (optional)
-    # For now we'll just leave placeholders like {{ health_sector_section }} empty.
-    # In a real implementation you would generate those blocks here.
+        # Add computed fields
+        data['current_year'] = datetime.now().year
 
-    # Generate the final HTML
-    html_content = PolicyGenerator.generate_content(
-        template.content_structure['html'],
-        data
-    )
+        # Get the active template
+        template = PolicyTemplate.objects.filter(is_active=True).first()
+        if not template:
+            return Response({'error': 'No active policy template'}, status=500)
 
-    # Create the Policy record
-    policy = Policy.objects.create(
-        user=request.user,
-        template=template,
-        title=f"Privacy Policy – {data.get('legal_name', 'Untitled')}",
-        responses=data,
-        generated_content=html_content,
-        effective_date=data.get('effective_date', timezone.now().date()),
-        status='published'   # or 'draft'
-    )
+        # Generate the final HTML
+        html_content = PolicyGenerator.generate_content(
+            template.content_structure['html'],
+            data
+        )
 
-    # Generate PDF and QR (can be moved to Celery for production)
-    PolicyGenerator.generate_pdf(policy)
-    PolicyGenerator.generate_qr(policy)
-    policy.save()
+        # Create the Policy record (using effective_date_obj for the DateField)
+        policy = Policy.objects.create(
+            user=request.user,
+            template=template,
+            title=f"Privacy Policy – {data.get('legal_name', 'Untitled')}",
+            responses=data,                     # data now contains the string version
+            generated_content=html_content,
+            effective_date=effective_date_obj,  # this is a date object
+            status='published'
+        )
 
-    out_serializer = PolicySerializer(policy)
-    return Response(out_serializer.data, status=status.HTTP_201_CREATED)
+        # Generate PDF and QR
+        PolicyGenerator.generate_pdf(policy)
+        PolicyGenerator.generate_qr(policy)
+        policy.save()
 
+        out_serializer = PolicySerializer(policy)
+        return Response(out_serializer.data, status=status.HTTP_201_CREATED)
+
+    except Exception as e:
+        import sys
+        import traceback
+        print(">>> EXCEPTION CAUGHT:", file=sys.stderr)
+        traceback.print_exc(file=sys.stderr)
+        with open('/tmp/policy_error.log', 'a') as f:
+            f.write(f"--- {timezone.now()} ---\n")
+            f.write(traceback.format_exc())
+            f.write("\n\n")
+        return Response({'error': 'Internal server error', 'detail': str(e)}, status=500)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

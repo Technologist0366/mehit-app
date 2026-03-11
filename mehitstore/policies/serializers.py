@@ -86,7 +86,7 @@ class PolicyGenerateSerializer(serializers.Serializer):
     dpo_email = serializers.EmailField(required=False)
 
     # Policy metadata
-    effective_date = serializers.DateField(required=False)
+#    effective_date = serializers.DateField(required=False)
 
 class PolicySerializer(serializers.ModelSerializer):
     class Meta:

@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'orders',
     'blog',
     'policies',
+    'accounts',
+    'tools',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +79,7 @@ ROOT_URLCONF = 'mehit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -167,3 +169,11 @@ if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     # WhiteNoise static file compression/caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Custom user model
+AUTH_USER_MODEL = 'accounts.User'
+
+# Authentication URLs
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/tools/'      # where user goes after login
+LOGOUT_REDIRECT_URL = '/'           # where user goes after logout
