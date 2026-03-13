@@ -20,7 +20,7 @@ def signup(request):
             user = form.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, "Account created successfully!")
-            return redirect('tools')
+            return redirect('/tools/')
     else:
         form = CustomUserCreationForm()
     return render(request, 'accounts/signup.html', {'form': form})
